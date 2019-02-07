@@ -28,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
                 TextView textDisplay = (TextView) findViewById(R.id.textViewDisplay);
 
                 String nameToDisplay = firstName.getText().toString() + " " + lastName.getText().toString();
+
+                // let add just a little bit of validation.
+                if (nameToDisplay.trim().isEmpty()) {
+                    textDisplay.setText("Enter your name!");
+                    return;
+                }
+
                 Resources res = getResources();
                 String displayString = res.getString(R.string.welcome_message, nameToDisplay);
                 textDisplay.setText(displayString);
