@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Hello World</string>
+    <string name="welcome_message">Hello, %1$s!</string>
+    <string name="display_button_text">Display</string>
+    <string name="text_name_hint">First Name</string>
+    <string name="text_last_hint">Last Name</string>
+    <string name="clear_button_text">Clear</string>
+    <string name="display_view_text">Hello World!</string>
+</resources>
