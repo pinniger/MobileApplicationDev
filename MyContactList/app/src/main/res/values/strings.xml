@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">My Contact List</string>
-    <string name="off_button_text">OFF</string>
+    <string name="off_button_text">Off</string>
     <string name="save_button_text">Save</string>
 </resources>
