@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ToggleButton
-            android:id="@+id/buttonOff"
+            android:id="@+id/toggleButtonEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -43,6 +43,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -53,13 +54,41 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayoutBottom"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutTop">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutTop"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textViewAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="180dp" />
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="113dp" />
+
+            <TextView
+                android:id="@+id/textViewContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="85dp" />
+        </LinearLayout>
     </ScrollView>
 
     <android.support.constraint.ConstraintLayout
@@ -70,48 +99,51 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/imageButtonMap"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="90dp"
+            android:layout_marginLeft="90dp"
+            android:layout_marginEnd="92dp"
+            android:layout_marginRight="92dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/map_icon_description"
+            android:src="@drawable/ic_location_on_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageButtonSettings"
+            app:layout_constraintStart_toEndOf="@+id/imageButtonList" />
+
+        <ImageButton
+            android:id="@+id/imageButtonList"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginBottom="9dp"
-            android:src="@drawable/ic_location_on_black_24dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/list_icon_description"
+            android:src="@drawable/ic_format_list_bulleted_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="96dp"
-            android:layout_marginLeft="96dp"
-            android:layout_marginEnd="98dp"
-            android:layout_marginRight="98dp"
-            android:layout_marginBottom="7dp"
-            android:src="@drawable/ic_format_list_bulleted_black_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-            app:layout_constraintStart_toEndOf="@+id/imageButton" />
-
-        <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/imageButtonSettings"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/settings_icon_description"
             android:src="@drawable/ic_settings_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </android.support.constraint.ConstraintLayout>
-
 
 
 </android.support.constraint.ConstraintLayout>
