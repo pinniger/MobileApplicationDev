@@ -20,4 +20,6 @@
     <string name="text_birthday_text">Birthday:</string>
     <string name="btn_change_text">Change</string>
     <string name="edit_date_text">01/01/1970</string>
+    <string name="btn_cancel_text">Cancel</string>
+    <string name="btn_select_text">Select</string>
 </resources>
