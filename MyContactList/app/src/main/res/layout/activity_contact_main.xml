@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/buttonSave"
+            android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -44,7 +44,7 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="0dp"
+        android:layout_width="392dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -103,14 +103,13 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
+                android:autofillHints="@string/edit_address_hint"
                 android:ems="14"
                 android:hint="@string/edit_address_hint"
-                android:autofillHints="@string/edit_address_hint"
                 android:imeOptions="actionNext"
                 android:inputType="textCapWords"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-        </EditText>
+                app:layout_constraintTop_toTopOf="parent"></EditText>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -126,9 +125,9 @@
                     android:id="@+id/editCity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:autofillHints="@string/edit_city_hint"
                     android:ems="8"
                     android:hint="@string/edit_city_hint"
-                    android:autofillHints="@string/edit_city_hint"
                     android:inputType="textCapWords"
                     android:nextFocusDown="@id/editState"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -138,9 +137,9 @@
                     android:id="@+id/editState"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:autofillHints="@string/edit_st_hint"
                     android:ems="2"
                     android:hint="@string/edit_st_hint"
-                    android:autofillHints="@string/edit_st_hint"
                     android:inputType="textCapCharacters"
                     android:maxLength="2"
                     android:nextFocusDown="@id/editZip"
@@ -152,9 +151,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:autofillHints="@string/edit_zip_hint"
                     android:ems="5"
                     android:hint="@string/edit_zip_hint"
-                    android:autofillHints="@string/edit_zip_hint"
                     android:inputType="numberSigned"
                     android:maxLength="5"
                     android:nextFocusDown="@id/textHome"
@@ -189,9 +188,9 @@
                         android:id="@+id/editHome"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:autofillHints="@string/edit_phone_sample"
                         android:ems="7"
                         android:hint="@string/edit_phone_sample"
-                        android:autofillHints="@string/edit_phone_sample"
                         android:imeOptions="actionNext"
                         android:inputType="phone"
                         android:maxLength="14"
@@ -215,9 +214,9 @@
                         android:id="@+id/editCell"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:autofillHints="@string/edit_phone_sample"
                         android:ems="7"
                         android:hint="@string/edit_phone_sample"
-                        android:autofillHints="@string/edit_phone_sample"
                         android:imeOptions="actionNext"
                         android:inputType="phone"
                         android:maxLength="14" />
@@ -247,9 +246,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
+                    android:autofillHints="@string/edit_email_hint"
                     android:ems="13"
                     android:hint="@string/edit_email_hint"
-                    android:autofillHints="@string/edit_email_hint"
                     android:imeOptions="actionNext"
                     android:inputType="textEmailAddress">
 
@@ -257,39 +256,39 @@
             </LinearLayout>
 
 
-                <LinearLayout
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textBday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/text_birthday_text" />
 
-                    <TextView
-                        android:id="@+id/textBday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:text="@string/text_birthday_text" />
+                <EditText
+                    android:id="@+id/editBirthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:ems="10"
+                    android:imeOptions="actionNext"
+                    android:inputType="date"
+                    android:text="@string/edit_date_text">
 
-                    <EditText
-                        android:id="@+id/editBirthday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:ems="10"
-                        android:imeOptions="actionNext"
-                        android:inputType="date"
-                        android:text="@string/edit_date_text">
+                </EditText>
 
-                    </EditText>
-
-                    <Button
-                        android:id="@+id/btnBirthday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/btn_change_text" />
+                <Button
+                    android:id="@+id/btnBirthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_change_text" />
 
 
             </LinearLayout>
@@ -351,8 +350,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </android.support.constraint.ConstraintLayout>
-
-
 
 
 </android.support.constraint.ConstraintLayout>
