@@ -85,6 +85,8 @@ public class ContactActivity extends AppCompatActivity implements DatePickerDial
         EditText editHome = findViewById(R.id.editHome);
         EditText editCell = findViewById(R.id.editCell);
         EditText editEmail = findViewById(R.id.editEmail);
+        EditText editBirthday = findViewById(R.id.editBirthday);
+
         Button buttonChange = findViewById(R.id.btnBirthday);
         Button buttonSave = findViewById(R.id.btnSave);
 
@@ -96,6 +98,7 @@ public class ContactActivity extends AppCompatActivity implements DatePickerDial
         editHome.setEnabled(enabled);
         editCell.setEnabled(enabled);
         editEmail.setEnabled(enabled);
+        editBirthday.setEnabled(enabled);
         buttonChange.setEnabled(enabled);
         buttonSave.setEnabled(enabled);
 
