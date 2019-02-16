@@ -79,6 +79,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:ems="14"
+                android:hint="@string/edit_contact_hint"
                 android:imeOptions="actionNext"
                 android:inputType="textCapWords"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -103,10 +104,13 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:ems="14"
+                android:hint="@string/edit_address_hint"
+                android:autofillHints="@string/edit_address_hint"
                 android:imeOptions="actionNext"
                 android:inputType="textCapWords"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></EditText>
+                app:layout_constraintTop_toTopOf="parent">
+        </EditText>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,9 +127,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="8"
+                    android:hint="@string/edit_city_hint"
+                    android:autofillHints="@string/edit_city_hint"
                     android:inputType="textCapWords"
                     android:nextFocusDown="@id/editState"
-                    android:text="City"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -134,10 +139,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="2"
+                    android:hint="@string/edit_st_hint"
+                    android:autofillHints="@string/edit_st_hint"
                     android:inputType="textCapCharacters"
                     android:maxLength="2"
                     android:nextFocusDown="@id/editZip"
-                    android:text="St"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -147,10 +153,11 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="5"
+                    android:hint="@string/edit_zip_hint"
+                    android:autofillHints="@string/edit_zip_hint"
                     android:inputType="numberSigned"
                     android:maxLength="5"
                     android:nextFocusDown="@id/textHome"
-                    android:text="Zip"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -176,13 +183,15 @@
                         android:id="@+id/textHome"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Home Phone:" />
+                        android:text="@string/text_home_text" />
 
                     <EditText
                         android:id="@+id/editHome"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="7"
+                        android:hint="@string/edit_phone_sample"
+                        android:autofillHints="@string/edit_phone_sample"
                         android:imeOptions="actionNext"
                         android:inputType="phone"
                         android:maxLength="14"
@@ -200,13 +209,15 @@
                         android:id="@+id/textCell"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cell Phone:" />
+                        android:text="@string/text_cell_text" />
 
                     <EditText
                         android:id="@+id/editCell"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="7"
+                        android:hint="@string/edit_phone_sample"
+                        android:autofillHints="@string/edit_phone_sample"
                         android:imeOptions="actionNext"
                         android:inputType="phone"
                         android:maxLength="14" />
@@ -228,7 +239,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp"
-                    android:text="E-Mail Address:" />
+                    android:text="@string/text_email_text" />
 
                 <EditText
                     android:id="@+id/editEmail"
@@ -237,6 +248,8 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
                     android:ems="13"
+                    android:hint="@string/edit_email_hint"
+                    android:autofillHints="@string/edit_email_hint"
                     android:imeOptions="actionNext"
                     android:inputType="textEmailAddress">
 
@@ -244,25 +257,20 @@
             </LinearLayout>
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textBday"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginStart="10dp"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="15dp"
-                        android:text="Birthday:" />
+                        android:text="@string/text_birthday_text" />
 
                     <EditText
                         android:id="@+id/editBirthday"
@@ -270,30 +278,20 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginLeft="10dp"
-                        android:ems="13"
+                        android:ems="10"
                         android:imeOptions="actionNext"
                         android:inputType="date"
-                        android:text="01/01/1970">
+                        android:text="@string/edit_date_text">
 
                     </EditText>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="vertical"
-                    android:layout_gravity="bottom">
 
                     <Button
                         android:id="@+id/btnBirthday"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Change" />
+                        android:text="@string/btn_change_text" />
 
-                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

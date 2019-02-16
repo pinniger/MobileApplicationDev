@@ -7,5 +7,17 @@
     <string name="settings_icon_description">Settings</string>
     <string name="text_contact_text">Contact:</string>
     <string name="text_address_text">Address:</string>
-    <string name="edit_contact_hint">Enter Contact Name</string>
+    <string name="edit_contact_hint">Contact Name</string>
+    <string name="edit_city_hint">City</string>
+    <string name="edit_st_hint">St</string>
+    <string name="edit_zip_hint">Zip</string>
+    <string name="edit_address_hint">Street</string>
+    <string name="edit_email_hint">sample@sample.com</string>
+    <string name="edit_phone_sample">555-555-5555</string>
+    <string name="text_home_text">Home Phone:</string>
+    <string name="text_cell_text">Cell Phone:</string>
+    <string name="text_email_text">E-Mail Address:</string>
+    <string name="text_birthday_text">Birthday:</string>
+    <string name="btn_change_text">Change</string>
+    <string name="edit_date_text">01/01/1970</string>
 </resources>
