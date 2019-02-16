@@ -5,4 +5,7 @@
     <string name="map_icon_description">Map</string>
     <string name="list_icon_description">List</string>
     <string name="settings_icon_description">Settings</string>
+    <string name="text_contact_text">Contact:</string>
+    <string name="text_address_text">Address:</string>
+    <string name="edit_contact_hint">Enter Contact Name</string>
 </resources>
