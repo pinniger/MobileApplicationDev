@@ -81,9 +81,8 @@
                 android:ems="14"
                 android:hint="@string/edit_contact_hint"
                 android:imeOptions="actionNext"
-                android:inputType="textCapWords"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:nextFocusDown="@id/editAddress"
+                android:inputType="textCapWords">
 
                 <requestFocus />
             </EditText>
@@ -106,10 +105,9 @@
                 android:autofillHints="@string/edit_address_hint"
                 android:ems="14"
                 android:hint="@string/edit_address_hint"
+                android:nextFocusDown="@id/editCity"
                 android:imeOptions="actionNext"
-                android:inputType="textCapWords"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></EditText>
+                android:inputType="textCapWords"></EditText>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -142,9 +140,7 @@
                     android:hint="@string/edit_st_hint"
                     android:inputType="textCapCharacters"
                     android:maxLength="2"
-                    android:nextFocusDown="@id/editZip"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:nextFocusDown="@id/editZip"/>
 
                 <EditText
                     android:id="@+id/editZip"
@@ -156,10 +152,7 @@
                     android:hint="@string/edit_zip_hint"
                     android:inputType="numberSigned"
                     android:maxLength="5"
-                    android:nextFocusDown="@id/textHome"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
+                    android:nextFocusDown="@id/textHome" />
             </LinearLayout>
 
             <LinearLayout
@@ -219,6 +212,7 @@
                         android:hint="@string/edit_phone_sample"
                         android:imeOptions="actionNext"
                         android:inputType="phone"
+                        android:nextFocusDown="@id/editEmail"
                         android:maxLength="14" />
                 </LinearLayout>
 
@@ -250,6 +244,7 @@
                     android:ems="13"
                     android:hint="@string/edit_email_hint"
                     android:imeOptions="actionNext"
+                    android:nextFocusDown="@id/editBirthday"
                     android:inputType="textEmailAddress">
 
                 </EditText>
@@ -289,8 +284,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/btn_change_text" />
-
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
