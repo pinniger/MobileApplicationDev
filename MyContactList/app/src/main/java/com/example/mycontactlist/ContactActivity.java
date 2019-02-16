@@ -1,16 +1,22 @@
 package com.example.mycontactlist;
 
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
-public class ContactActivity extends AppCompatActivity {
+import java.util.Calendar;
+
+
+public class ContactActivity extends AppCompatActivity implements DatePickerDialog.SaveDateListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +27,7 @@ public class ContactActivity extends AppCompatActivity {
         initSettingsButton();
         initToggleButton();
         setForEditing(false);
+        initChangeDateButton();
     }
 
     private void initListButton(){
@@ -95,8 +102,26 @@ public class ContactActivity extends AppCompatActivity {
         if (enabled){
             editName.requestFocus();
         } else {
-            ScrollView s = (ScrollView) findViewById(R.id.scrollView2);
+            ScrollView s = findViewById(R.id.scrollView2);
             s.clearFocus();
         }
+    }
+
+    private void initChangeDateButton(){
+        Button changeDate = findViewById(R.id.btnBirthday);
+        changeDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getSupportFragmentManager();
+                DatePickerDialog datePickerDialog = new DatePickerDialog();
+                datePickerDialog.show(fm, "DatePick");
+            }
+        });
+    }
+
+    @Override
+    public void didFinishDatePickerDialog(Calendar selectTime) {
+        TextView birthDay = findViewById(R.id.editBirthday);
+        birthDay.setText(DateFormat.format("MM/dd/yyy", selectTime.getTimeInMillis()).toString());
     }
 }
