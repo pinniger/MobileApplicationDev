@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Contacts Demo</string>
+    <string name="save_button_text">Save</string>
+    <string name="contact_name_text">Name</string>
+    <string name="email_address_text">Email Address</string>
+    <string name="home_phone_text">Home Phone</string>
+    <string name="cell_phone_text">Cell Phone</string>
+    <string name="text_contact_sort">Sort Contacts By:</string>
+    <string name="text_radio_name">Name</string>
+    <string name="text_radio_birthday">Birthday</string>
+    <string name="text_sort_order">Sort Order:</string>
+    <string name="text_radio_asc">Ascending</string>
+    <string name="text_radio_desc">Descending</string>
+    <string name="text_radio_city">City</string>
+</resources>
