@@ -25,6 +25,12 @@ public class ContactSettingsActivity extends AppCompatActivity {
         initSortOrderClick();
     }
 
+    private void editSettings(String type, String value){
+        getSharedPreferences("MyContactListPreferences", Context.MODE_PRIVATE)
+                .edit()
+                .putString(type,value).commit();
+    }
+
     private void initSortByClick(){
         RadioGroup rgSortBy = findViewById(R.id.radioGroupSortBy);
         rgSortBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -34,18 +40,12 @@ public class ContactSettingsActivity extends AppCompatActivity {
                 RadioButton rbCity = findViewById(R.id.radioCity);
 
                 if (rbName.isChecked()){
-                    getSharedPreferences("MyContactListPreferences", Context.MODE_PRIVATE)
-                            .edit()
-                            .putString("sortfield","contactname").commit();
+                    editSettings("sortfield","contactname");
 
                 } else if (rbCity.isChecked()){
-                    getSharedPreferences("MyContactListPreferences", Context.MODE_PRIVATE)
-                            .edit()
-                            .putString("sortfield","city").commit();
+                    editSettings("sortfield","city");
                 } else {
-                    getSharedPreferences("MyContactListPreferences", Context.MODE_PRIVATE)
-                            .edit()
-                            .putString("sortfield","birthday").commit();
+                    editSettings("sortfield","birthday");
                 }
             }
         });
@@ -59,14 +59,10 @@ public class ContactSettingsActivity extends AppCompatActivity {
                 RadioButton rbAscending = findViewById(R.id.radioAcending);
 
                 if (rbAscending.isChecked()){
-                    getSharedPreferences("MyContactListPreferences", Context.MODE_PRIVATE)
-                            .edit()
-                            .putString("sortorder","ASC").commit();
+                    editSettings("sortorder","ASC");
 
                 } else {
-                    getSharedPreferences("MyContactListPreferences", Context.MODE_PRIVATE)
-                            .edit()
-                            .putString("sortfield","DESC").commit();
+                    editSettings("sortorder","DESC");
                 }
             }
         });
