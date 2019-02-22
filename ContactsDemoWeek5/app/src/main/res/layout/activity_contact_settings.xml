@@ -54,114 +54,130 @@
 
     </android.support.constraint.ConstraintLayout>
 
-    <LinearLayout
-        android:layout_width="395dp"
-        android:layout_height="652dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textContactSort"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:text="Sort Contacts By:" />
+    <ScrollView
+        android:id="@+id/scrollViewMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <RadioGroup
-            android:id="@+id/radioGroupSortBy"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="395dp"
+            android:layout_height="652dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <RadioButton
-                android:id="@+id/radioName"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textContactSort"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Name" />
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="Sort Contacts By:" />
 
-            <RadioButton
-                android:id="@+id/radioCity"
-                android:layout_width="wrap_content"
+            <RadioGroup
+                android:id="@+id/radioGroupSortBy"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="City" />
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp">
 
-            <RadioButton
-                android:id="@+id/radioBirthday"
-                android:layout_width="wrap_content"
+                <RadioButton
+                    android:id="@+id/radioName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Name" />
+
+                <RadioButton
+                    android:id="@+id/radioCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="City" />
+
+                <RadioButton
+                    android:id="@+id/radioBirthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Birthday" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textSortOrder"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Birthday" />
-        </RadioGroup>
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="Sort Order:" />
 
-        <TextView
-            android:id="@+id/textSortOrder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:text="Sort Order:" />
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="10dp">
-
-            <RadioButton
-                android:id="@+id/radioAcending"
-                android:layout_width="wrap_content"
+            <RadioGroup
+                android:id="@+id/radioGroupSortOrder"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Ascending" />
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp">
 
-            <RadioButton
-                android:id="@+id/radioDescending"
-                android:layout_width="wrap_content"
+                <RadioButton
+                    android:id="@+id/radioAcending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ascending" />
+
+                <RadioButton
+                    android:id="@+id/radioDescending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Descending" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textColor"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Descending" />
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="Color:" />
 
-        </RadioGroup>
-        <TextView
-            android:id="@+id/textColor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:text="Color:" />
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="10dp">
-
-            <RadioButton
-                android:id="@+id/radioYellow"
-                android:layout_width="wrap_content"
+            <RadioGroup
+                android:id="@+id/radioGroupColor"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Yellow" />
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp">
 
-            <RadioButton
-                android:id="@+id/radioGrey"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Grey" />
+                <RadioButton
+                    android:id="@+id/radioYellow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Yellow" />
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/radioGrey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Grey" />
 
-    </LinearLayout>
+                <RadioButton
+                    android:id="@+id/radioWhite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="White" />
 
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

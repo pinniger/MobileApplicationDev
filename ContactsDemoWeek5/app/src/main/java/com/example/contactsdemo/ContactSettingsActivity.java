@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 
 import java.util.RandomAccess;
 
@@ -16,6 +17,7 @@ public class ContactSettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_contact_settings);
         initListButton();
         initMapButton();
@@ -23,6 +25,26 @@ public class ContactSettingsActivity extends AppCompatActivity {
         initSettings();
         initSortByClick();
         initSortOrderClick();
+        initColorClick();
+    }
+
+    private void initColorClick() {
+        RadioGroup rgColor = findViewById(R.id.radioGroupColor);
+        rgColor.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton rbYellow = findViewById(R.id.radioYellow);
+                RadioButton rbGrey = findViewById(R.id.radioGrey);
+                if (rbYellow.isChecked()) {
+                    editSettings("color", "colorYellow");
+                } else if(rbGrey.isChecked()) {
+                    editSettings("color", "colorGrey");
+                } else {
+                    editSettings("color","colorWhite");
+                }
+
+            }
+        });
     }
 
     private void editSettings(String type, String value){
@@ -52,7 +74,7 @@ public class ContactSettingsActivity extends AppCompatActivity {
     }
 
     private void initSortOrderClick(){
-        RadioGroup rgSortBy = findViewById(R.id.radioGroupSortBy);
+        RadioGroup rgSortBy = findViewById(R.id.radioGroupSortOrder);
         rgSortBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -92,6 +114,23 @@ public class ContactSettingsActivity extends AppCompatActivity {
         } else {
             rbDescending.setChecked(true);
         }
+
+        String color = getSharedPreferences("MyContactListPreferences", Context.MODE_PRIVATE).getString("color","colorWhite");
+        ScrollView sv = findViewById(R.id.scrollViewMain);
+        if (color.equalsIgnoreCase("colorYellow")){
+            sv.setBackgroundResource(R.color.colorYellow);
+            RadioButton rbYellow = findViewById(R.id.radioYellow);
+            rbYellow.setChecked(true);
+        } else if(color.equalsIgnoreCase("colorGrey")){
+            sv.setBackgroundResource(R.color.colorGrey);
+            RadioButton rbYellow = findViewById(R.id.radioGrey);
+            rbYellow.setChecked(true);
+        } else {
+            sv.setBackgroundResource(R.color.colorWhite);
+            RadioButton rbWhite = findViewById(R.id.radioWhite);
+            rbWhite.setChecked(true);
+        }
+
     }
     private void initListButton() {
         ImageButton ibList = findViewById(R.id.imageButtonList);
