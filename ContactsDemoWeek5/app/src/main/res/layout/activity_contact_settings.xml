@@ -133,6 +133,34 @@
                 android:text="Descending" />
 
         </RadioGroup>
+        <TextView
+            android:id="@+id/textColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:text="Color:" />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="10dp">
+
+            <RadioButton
+                android:id="@+id/radioYellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Yellow" />
+
+            <RadioButton
+                android:id="@+id/radioGrey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Grey" />
+
+        </RadioGroup>
 
     </LinearLayout>
 

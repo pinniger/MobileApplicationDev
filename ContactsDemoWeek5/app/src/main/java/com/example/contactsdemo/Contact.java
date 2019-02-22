@@ -5,6 +5,7 @@ import java.util.Calendar;
 public class Contact {
 
     private int contactID;
+    private String contactName;
     private String streetAddress;
     private String city;
     private String state;
@@ -19,6 +20,14 @@ public class Contact {
 
     public void setContactID(int contactID) {
         this.contactID = contactID;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
     }
 
     public String getStreetAddress() {
