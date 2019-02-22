@@ -69,8 +69,6 @@ public class ContactDataSource {
         catch (Exception e){
             lastId = -1;
         }
-
-
         return lastId;
     }
 
