@@ -13,7 +13,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
@@ -25,9 +28,8 @@ public class ContactActivity extends AppCompatActivity implements DatePickerDial
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
-
-        currentContact = new Contact();
-
+        //currentContact = new Contact();
+        initContact(1);
         initListButton();
         initMapButton();
         initSettingsButton();
@@ -36,6 +38,43 @@ public class ContactActivity extends AppCompatActivity implements DatePickerDial
         initChangeDateButton();
         initTextChangedEvents();
         initSaveButton();
+
+    }
+
+    private void initContact(int id) {
+
+        ContactDataSource ds = new ContactDataSource(ContactActivity.this);
+        try{
+            ds.open();
+            currentContact = ds.getSpecificContact(id);
+            ds.close();
+        } catch (Exception e){
+            Toast.makeText(this, "Unable to load contact", Toast.LENGTH_LONG).show();
+        }
+
+
+        EditText editName = findViewById(R.id.editName);
+        EditText editAddress = findViewById(R.id.editAddress);
+        EditText editCity = findViewById(R.id.editCity);
+        EditText editState = findViewById(R.id.editState);
+        EditText editZip = findViewById(R.id.editZipcode);
+        EditText editPhone = findViewById(R.id.editHome);
+        EditText editCell = findViewById(R.id.editCell);
+        EditText editEmail = findViewById(R.id.editEMail);
+        TextView birthDay = findViewById(R.id.textBirthday);
+
+        editName.setText(currentContact.getContactName());
+        editAddress.setText(currentContact.getStreetAddress());
+        editCity.setText(currentContact.getCity());
+        editState.setText(currentContact.getState());
+        editZip.setText(currentContact.getZipCode());
+        editPhone.setText(currentContact.getPhoneNumber());
+        editCell.setText(currentContact.getCellNumber());
+        editEmail.setText(currentContact.geteMail());
+        birthDay.setText(DateFormat.format("MM/dd/yyyy",
+                currentContact.getBirthday().getTimeInMillis()).toString());
+
+
     }
 
     private void initSaveButton() {
@@ -94,7 +133,7 @@ public class ContactActivity extends AppCompatActivity implements DatePickerDial
         });
 
         final EditText etStreetAddress = findViewById(R.id.editAddress);
-        etContactName.addTextChangedListener(new TextWatcher() {
+        etStreetAddress.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -112,7 +151,7 @@ public class ContactActivity extends AppCompatActivity implements DatePickerDial
         });
 
         final EditText etCity = findViewById(R.id.editCity);
-        etContactName.addTextChangedListener(new TextWatcher() {
+        etCity.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -130,7 +169,7 @@ public class ContactActivity extends AppCompatActivity implements DatePickerDial
         });
 
         final EditText etState = findViewById(R.id.editState);
-        etContactName.addTextChangedListener(new TextWatcher() {
+        etState.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -148,7 +187,7 @@ public class ContactActivity extends AppCompatActivity implements DatePickerDial
         });
 
         final EditText etZip = findViewById(R.id.editZipcode);
-        etContactName.addTextChangedListener(new TextWatcher() {
+        etZip.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -166,7 +205,7 @@ public class ContactActivity extends AppCompatActivity implements DatePickerDial
         });
 
         final EditText etHome = findViewById(R.id.editHome);
-        etContactName.addTextChangedListener(new TextWatcher() {
+        etHome.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -184,7 +223,7 @@ public class ContactActivity extends AppCompatActivity implements DatePickerDial
         });
 
         final EditText etCell = findViewById(R.id.editCell);
-        etContactName.addTextChangedListener(new TextWatcher() {
+        etCell.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -202,7 +241,7 @@ public class ContactActivity extends AppCompatActivity implements DatePickerDial
         });
 
         final EditText etEmail = findViewById(R.id.editEMail);
-        etContactName.addTextChangedListener(new TextWatcher() {
+        etEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 

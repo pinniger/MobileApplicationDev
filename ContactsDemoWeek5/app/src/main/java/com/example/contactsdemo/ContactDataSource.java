@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 
 public class ContactDataSource {
 
@@ -56,6 +57,30 @@ public class ContactDataSource {
 
         return initialValues;
     }
+
+    public Contact getSpecificContact(int id){
+        Contact contact = new Contact();
+        String query = "select * from contact where _id = " + id;
+        Cursor cursor = database.rawQuery(query, null);
+        if(cursor.moveToFirst()){
+            contact.setContactID(cursor.getInt(0));
+            contact.setContactName(cursor.getString(1));
+            contact.setStreetAddress(cursor.getString(2));
+            contact.setCity(cursor.getString(3));
+            contact.setState(cursor.getString(4));
+            contact.setZipCode(cursor.getString(5));
+            contact.setPhoneNumber(cursor.getString(6));
+            contact.setCellNumber(cursor.getString(7));
+            contact.seteMail(cursor.getString(8));
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(Long.valueOf(cursor.getString(9)));
+            contact.setBirthday(calendar);
+
+            cursor.close();
+        }
+        return contact;
+    }
+
 
     public int getLastContactId(){
         int lastId = -1;

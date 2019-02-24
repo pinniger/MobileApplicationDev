@@ -35,12 +35,16 @@ public class ContactSettingsActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton rbYellow = findViewById(R.id.radioYellow);
                 RadioButton rbGrey = findViewById(R.id.radioGrey);
+                ScrollView sv = findViewById(R.id.scrollViewMain);
                 if (rbYellow.isChecked()) {
                     editSettings("color", "colorYellow");
+                    sv.setBackgroundResource(R.color.colorYellow);
                 } else if(rbGrey.isChecked()) {
                     editSettings("color", "colorGrey");
+                    sv.setBackgroundResource(R.color.colorGrey);
                 } else {
                     editSettings("color","colorWhite");
+                    sv.setBackgroundResource(R.color.colorWhite);
                 }
 
             }
