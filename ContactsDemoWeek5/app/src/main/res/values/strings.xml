@@ -12,4 +12,7 @@
     <string name="text_radio_asc">Ascending</string>
     <string name="text_radio_desc">Descending</string>
     <string name="text_radio_city">City</string>
+    <string name="text_address_text">Address</string>
+    <string name="text_birthday_text">Birthday</string>
+    <string name="button_birthday_text">Change</string>
 </resources>

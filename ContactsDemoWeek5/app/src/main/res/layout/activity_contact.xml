@@ -126,7 +126,7 @@
                 android:id="@+id/textAddress"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Address"
+                android:text="@string/text_address_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editName" />
@@ -222,7 +222,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Birthday"
+                android:text="@string/text_birthday_text"
                 app:layout_constraintStart_toStartOf="@+id/editEMail"
                 app:layout_constraintTop_toTopOf="@+id/editBirthday" />
 
@@ -241,7 +241,7 @@
                 android:id="@+id/buttonBirthday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Change"
+                android:text="@string/button_birthday_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editEMail" />
 
