@@ -59,20 +59,28 @@
                     android:text="Player One" />
 
                 <!-- This is view is needed to right align the score -->
+
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/text_player_one_score"
+                <ImageButton
+                    android:id="@+id/imageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:gravity="right"
-                    android:text="75"
-                    android:textAlignment="gravity"
-                    android:textColor="@color/colorAccent" />
+                    android:background="@null"
+                    app:srcCompat="@drawable/ic_edit_blue_24dp" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    app:srcCompat="@drawable/ic_delete_blue_24dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -113,15 +121,23 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/text_player_two_score"
+                <ImageButton
+                    android:id="@+id/imageButtonEditTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:gravity="right"
-                    android:text="60"
-                    android:textAlignment="gravity"
-                    android:textColor="@color/colorAccent" />
+                    android:background="@null"
+                    app:srcCompat="@drawable/ic_edit_blue_24dp" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonDeleteTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    app:srcCompat="@drawable/ic_delete_blue_24dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -161,15 +177,23 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/text_player_three_score"
+                <ImageButton
+                    android:id="@+id/imageButtonEditThree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:gravity="right"
-                    android:text="50"
-                    android:textAlignment="gravity"
-                    android:textColor="@color/colorAccent" />
+                    android:background="@null"
+                    app:srcCompat="@drawable/ic_edit_blue_24dp" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonDeleteThree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    app:srcCompat="@drawable/ic_delete_blue_24dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -210,15 +234,23 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/text_player_four_score"
+                <ImageButton
+                    android:id="@+id/imageButtonEditFour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:gravity="right"
-                    android:text="75"
-                    android:textAlignment="gravity"
-                    android:textColor="@color/colorAccent" />
+                    android:background="@null"
+                    app:srcCompat="@drawable/ic_edit_blue_24dp" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonDeleteFour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    app:srcCompat="@drawable/ic_delete_blue_24dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -259,15 +291,23 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/text_player_five_score"
+                <ImageButton
+                    android:id="@+id/imageButtonEditFive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:gravity="right"
-                    android:text="60"
-                    android:textAlignment="gravity"
-                    android:textColor="@color/colorAccent" />
+                    android:background="@null"
+                    app:srcCompat="@drawable/ic_edit_blue_24dp" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonDeleteFive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    app:srcCompat="@drawable/ic_delete_blue_24dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -307,15 +347,23 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/text_player_six_score"
+                <ImageButton
+                    android:id="@+id/imageButtonEditSix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:gravity="right"
-                    android:text="50"
-                    android:textAlignment="gravity"
-                    android:textColor="@color/colorAccent" />
+                    android:background="@null"
+                    app:srcCompat="@drawable/ic_edit_blue_24dp" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonDeleteSix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    app:srcCompat="@drawable/ic_delete_blue_24dp" />
             </LinearLayout>
 
         </LinearLayout>
