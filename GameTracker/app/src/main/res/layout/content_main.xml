@@ -173,6 +173,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Recent Winners"
+                android:textColor="#ffffff"
                 android:background="@color/colorPrimary"
                 android:textSize="24sp"/>
 
@@ -193,6 +194,7 @@
                         android:layout_marginTop="20dp"
                         android:text="February 23rd"
                         android:textSize="18dp"
+                        android:textColor="#ffffff"
                         android:layout_marginBottom="20dp"
                         android:layout_gravity="center"/>
 
@@ -212,6 +214,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="20dp"
                         android:text="Player One"
+                        android:textColor="#ffffff"
                         android:layout_gravity="center"/>
                 </LinearLayout>
                 <LinearLayout
@@ -226,6 +229,7 @@
                         android:layout_marginTop="20dp"
                         android:text="February 23rd"
                         android:textSize="18dp"
+                        android:textColor="#ffffff"
                         android:layout_marginBottom="20dp"
                         android:layout_gravity="center"/>
 
@@ -245,6 +249,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="20dp"
                         android:text="Player One"
+                        android:textColor="#ffffff"
                         android:layout_gravity="center"/>
                 </LinearLayout>
                 <LinearLayout
@@ -259,6 +264,7 @@
                         android:layout_marginTop="20dp"
                         android:text="February 23rd"
                         android:textSize="18dp"
+                        android:textColor="#ffffff"
                         android:layout_marginBottom="20dp"
                         android:layout_gravity="center"/>
 
@@ -278,6 +284,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="20dp"
                         android:text="Player One"
+                        android:textColor="#ffffff"
                         android:layout_gravity="center"/>
                 </LinearLayout>
 
