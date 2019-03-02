@@ -14,6 +14,7 @@ public class games extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_games);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("All Games");
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -24,6 +25,7 @@ public class games extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 }

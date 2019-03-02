@@ -1,5 +1,6 @@
 package com.example.gametracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -45,10 +46,16 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_players) {
-            Toast.makeText(this, "Players action has been clicked", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, players.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            //Toast.makeText(this, "Players action has been clicked", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.action_games){
-            Toast.makeText(this, "Players actioin clicked", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, games.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            //Toast.makeText(this, "Players actioin clicked", Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
