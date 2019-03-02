@@ -3,8 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.gametracker.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_players"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/action_players"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_games"
+        android:orderInCategory="101"
+        android:title="@string/action_games" />
 </menu>
