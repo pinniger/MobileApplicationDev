@@ -70,6 +70,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:textAlignment="gravity"
+                    android:textColor="@color/colorAccent"
                     android:text="75" />
             </LinearLayout>
 
@@ -102,6 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
+
                     android:text="Player Two" />
 
                 <!-- This is view is needed to right align the score -->
@@ -117,6 +119,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:textAlignment="gravity"
+                    android:textColor="@color/colorAccent"
                     android:text="60" />
             </LinearLayout>
 
@@ -164,6 +167,7 @@
                     android:layout_gravity="center"
                     android:gravity="right"
                     android:textAlignment="gravity"
+                    android:textColor="@color/colorAccent"
                     android:text="50" />
             </LinearLayout>
 
