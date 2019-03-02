@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             //Toast.makeText(this, "Players action has been clicked", Toast.LENGTH_SHORT).show();
             return true;
-        } else if (id == R.id.action_games){
+        } else if (id == R.id.action_games) {
             Intent intent = new Intent(MainActivity.this, games.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);

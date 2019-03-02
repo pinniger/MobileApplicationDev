@@ -8,14 +8,11 @@
     tools:context=".profile"
     tools:showIn="@layout/activity_profile">
 
-    <TextView
-        android:id="@+id/textViewProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginLeft="53dp"
-        android:layout_marginTop="51dp"
-        android:text="Profile Page"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/layout_banner"
+        android:layout_width="395dp"
+        android:layout_height="659dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"></LinearLayout>
 </android.support.constraint.ConstraintLayout>
