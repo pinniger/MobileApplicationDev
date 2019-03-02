@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/layout_topPlayers"
+            android:id="@+id/layoutMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -29,20 +29,20 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_gravity="center">
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profile_image"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:src="@drawable/profile_woman"
 
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#FF000000"/>
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp" />
 
                 <!-- This is view is needed to center align the name -->
                 <View
@@ -63,33 +63,34 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_weight="1" />
+
                 <TextView
                     android:id="@+id/text_player_one_score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="right"
+                    android:text="75"
                     android:textAlignment="gravity"
-                    android:textColor="@color/colorAccent"
-                    android:text="75" />
+                    android:textColor="@color/colorAccent" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:layout_gravity="center">
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profile_image_two"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:src="@drawable/profile_woman"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#FF000000"/>
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp" />
 
                 <!-- This is view is needed to center align the name -->
                 <View
@@ -118,27 +119,27 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="right"
+                    android:text="60"
                     android:textAlignment="gravity"
-                    android:textColor="@color/colorAccent"
-                    android:text="60" />
+                    android:textColor="@color/colorAccent" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:layout_gravity="center">
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profile_image_three"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:src="@drawable/profile_woman"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#FF000000"/>
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp" />
 
                 <!-- This is view is needed to center align the name -->
                 <View
@@ -166,9 +167,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="right"
+                    android:text="50"
                     android:textAlignment="gravity"
-                    android:textColor="@color/colorAccent"
-                    android:text="50" />
+                    android:textColor="@color/colorAccent" />
             </LinearLayout>
 
             <TextView
@@ -176,120 +177,126 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:background="@color/colorPrimary"
                 android:text="Recent Winners"
                 android:textColor="#ffffff"
-                android:background="@color/colorPrimary"
-                android:textSize="24sp"/>
+                android:textSize="24sp" />
 
             <LinearLayout
                 android:id="@+id/layout_recentWinners"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="20dp">
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/text_dateTwo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginTop="20dp"
-                        android:text="February 23rd"
-                        android:textSize="18dp"
-                        android:textColor="#ffffff"
                         android:layout_marginBottom="20dp"
-                        android:layout_gravity="center"/>
+                        android:text="February 23rd"
+                        android:textColor="#ffffff"
+                        android:textSize="18dp" />
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/winner_image_two"
                         android:layout_width="96dp"
                         android:layout_height="96dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="20dp"
                         android:src="@drawable/profile_woman"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="#FF000000"/>
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="2dp" />
+
                     <TextView
                         android:id="@+id/text_playerTwo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginBottom="20dp"
                         android:text="Player One"
-                        android:textColor="#ffffff"
-                        android:layout_gravity="center"/>
+                        android:textColor="#ffffff" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="20dp">
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/text_dateOne"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginTop="20dp"
-                        android:text="February 23rd"
-                        android:textSize="18dp"
-                        android:textColor="#ffffff"
                         android:layout_marginBottom="20dp"
-                        android:layout_gravity="center"/>
+                        android:text="February 23rd"
+                        android:textColor="#ffffff"
+                        android:textSize="18dp" />
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/winner_image_one"
                         android:layout_width="96dp"
                         android:layout_height="96dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="20dp"
                         android:src="@drawable/profile_woman"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="#FF000000"/>
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="2dp" />
+
                     <TextView
                         android:id="@+id/text_playerOne"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginBottom="20dp"
                         android:text="Player One"
-                        android:textColor="#ffffff"
-                        android:layout_gravity="center"/>
+                        android:textColor="#ffffff" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="20dp">
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/text_dateThree"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginTop="20dp"
-                        android:text="February 23rd"
-                        android:textSize="18dp"
-                        android:textColor="#ffffff"
                         android:layout_marginBottom="20dp"
-                        android:layout_gravity="center"/>
+                        android:text="February 23rd"
+                        android:textColor="#ffffff"
+                        android:textSize="18dp" />
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/winner_image_three"
                         android:layout_width="96dp"
                         android:layout_height="96dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="20dp"
                         android:src="@drawable/profile_woman"
-                        app:civ_border_width="2dp"
-                        app:civ_border_color="#FF000000"/>
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="2dp" />
+
                     <TextView
                         android:id="@+id/text_playerThree"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginBottom="20dp"
                         android:text="Player One"
-                        android:textColor="#ffffff"
-                        android:layout_gravity="center"/>
+                        android:textColor="#ffffff" />
                 </LinearLayout>
 
             </LinearLayout>
