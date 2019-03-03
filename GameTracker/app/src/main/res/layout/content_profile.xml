@@ -181,6 +181,7 @@
                 android:gravity="center"
                 android:textSize="18dp"
                 android:text="3rd Place" />
+            
             <TextView
                 android:id="@+id/textThridNumber"
                 android:layout_width="match_parent"

@@ -6,4 +6,6 @@
     <string name="title_activity_players">players</string>
     <string name="title_activity_games">games</string>
     <string name="title_activity_profile">profile</string>
+    <string name="title_activity_new_player">new_player</string>
+    <string name="title_activity_new_game">new_game</string>
 </resources>
