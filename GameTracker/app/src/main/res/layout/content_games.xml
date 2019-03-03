@@ -39,7 +39,7 @@
                     android:id="@+id/imgIconOne"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
-                    android:src="@drawable/ic_gamepad_black_24dp"></ImageView>
+                    app:srcCompat="@drawable/ic_gamepad_black_24dp"></ImageView>
 
                 <!-- This is view is needed to center align the name -->
                 <View
@@ -94,7 +94,7 @@
                     android:id="@+id/imgIconTwo"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
-                    android:src="@drawable/ic_gamepad_black_24dp"></ImageView>
+                    app:srcCompat="@drawable/ic_gamepad_black_24dp"></ImageView>
 
                 <!-- This is view is needed to center align the name -->
                 <View
@@ -149,7 +149,7 @@
                     android:id="@+id/imgIconThree"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
-                    android:src="@drawable/ic_gamepad_black_24dp"></ImageView>
+                    app:srcCompat="@drawable/ic_gamepad_black_24dp"></ImageView>
 
                 <!-- This is view is needed to center align the name -->
                 <View
@@ -203,7 +203,7 @@
                     android:id="@+id/imgIconFour"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
-                    android:src="@drawable/ic_gamepad_black_24dp"></ImageView>
+                    app:srcCompat="@drawable/ic_gamepad_black_24dp"></ImageView>
 
                 <!-- This is view is needed to center align the name -->
                 <View
@@ -257,7 +257,7 @@
                     android:id="@+id/imgIconFive"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
-                    android:src="@drawable/ic_gamepad_black_24dp"></ImageView>
+                    app:srcCompat="@drawable/ic_gamepad_black_24dp"></ImageView>
 
                 <!-- This is view is needed to center align the name -->
                 <View
@@ -312,7 +312,7 @@
                     android:id="@+id/imgIconSix"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
-                    android:src="@drawable/ic_gamepad_black_24dp"></ImageView>
+                    app:srcCompat="@drawable/ic_gamepad_black_24dp"></ImageView>
 
                 <!-- This is view is needed to center align the name -->
                 <View
