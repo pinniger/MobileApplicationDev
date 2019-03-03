@@ -30,7 +30,7 @@
             android:text="Date:" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/editDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -62,7 +62,7 @@
             android:text="Second Place:" />
 
         <EditText
-            android:id="@+id/editSecond"
+            android:id="@+id/editSecondPlace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -78,7 +78,7 @@
             android:text="Third Place:" />
 
         <EditText
-            android:id="@+id/editThird"
+            android:id="@+id/editThirdPlace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
