@@ -8,6 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class games extends AppCompatActivity {
 
@@ -28,8 +34,19 @@ public class games extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        initGames();
     }
 
+    private void initGames() {
+        Date currentTime = Calendar.getInstance().getTime();
+        Game g1 = new Game();
+        g1.setDate(currentTime);
+
+        TextView tv = findViewById(R.id.text_game_one);
+        String df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.ENGLISH).format(g1.getDate());
+        tv.setText(df);
+    }
 
 
 }

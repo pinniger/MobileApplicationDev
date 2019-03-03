@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class players extends AppCompatActivity {
 
@@ -27,11 +29,21 @@ public class players extends AppCompatActivity {
                 Intent intent = new Intent(players.this, new_player.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
 
+        initTopPlayers();
+    }
+
+    private void initTopPlayers() {
+        Player p1 = new Player("Clair Inniger","Developers", "@drawable/profile_woman");
+        p1.setScore(75);
+
+        ImageView civ = (ImageView) findViewById(R.id.profile_image);
+        civ.setImageResource(R.drawable.profile_woman);
+
+        TextView name = findViewById(R.id.text_player_one);
+        name.setText(p1.getName());
     }
 
     @Override

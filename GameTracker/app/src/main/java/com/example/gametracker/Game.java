@@ -1,8 +1,22 @@
+package com.example.gametracker;
+
+
 import java.util.Date;
 
 public class Game {
     public Date getDate() {
         return date;
+    }
+
+    public Game() {
+
+    }
+
+    public Game(Date date, Player firstPlace, Player secondPlace, Player thirdPlace) {
+        this.date = date;
+        this.firstPlace = firstPlace;
+        this.secondPlace = secondPlace;
+        this.thirdPlace = thirdPlace;
     }
 
     public void setDate(Date date) {

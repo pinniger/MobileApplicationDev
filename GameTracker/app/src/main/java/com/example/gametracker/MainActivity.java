@@ -1,6 +1,7 @@
 package com.example.gametracker;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -33,6 +36,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
         initProfileImage();
+        initTopPlayers();
+    }
+
+    private void initTopPlayers() {
+        Player p1 = new Player("Clair Inniger","Developers", "@drawable/profile_woman");
+        p1.setScore(75);
+
+        ImageView civ = (ImageView) findViewById(R.id.profile_image);
+        civ.setImageResource(R.drawable.profile_woman);
+
+        TextView name = findViewById(R.id.text_player_one);
+        name.setText(p1.getName());
+
+        TextView score = findViewById(R.id.text_player_one_score);
+        score.setText(Integer.toString(p1.getScore()));
     }
 
     private void initProfileImage() {
