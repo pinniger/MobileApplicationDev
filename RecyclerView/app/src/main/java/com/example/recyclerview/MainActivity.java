@@ -9,16 +9,26 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.LinkedList;
+
 public class MainActivity extends AppCompatActivity {
+
+    private final LinkedList<String> mWordList = new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Put initial data into the word list.
+        for (int i = 0; i < 20; i++) {
+            mWordList.addLast("Word " + i);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+       FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
