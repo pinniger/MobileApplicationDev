@@ -6,7 +6,11 @@
     android:padding="6dp">
 
     <TextView
-        android:id="@+id/word"
-        style="@style/word_title" />
+        android:id="@+id/name"
+        style="@style/name" />
+
+    <TextView
+        android:id="@+id/cell"
+        style="@style/cell" />
 
 </LinearLayout>
