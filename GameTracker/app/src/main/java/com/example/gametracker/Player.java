@@ -58,6 +58,8 @@ public class Player {
         this.image = image;
     }
 
+    public Player(){}
+
     public String getName() {
         return name;
     }
