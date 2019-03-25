@@ -1,32 +1,30 @@
 package com.example.gametracker;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.PlayerViewHolder> {
 
     private final List<Player> playerList = new ArrayList<>();
     private LayoutInflater mInflater;
+    private int view;
 
-    public PlayersListAdapter(Context context, List<Player> list) {
+    public PlayersListAdapter(Context context, List<Player> list, int v) {
         mInflater = LayoutInflater.from(context);
+        this.view = v;
         this.playerList.addAll(list);
     }
 
-    @NonNull
     @Override
     public PlayerViewHolder onCreateViewHolder(ViewGroup parent, int i) {
-        View mItemView = mInflater.inflate(R.layout.playerlist_item, parent, false);
+        View mItemView = mInflater.inflate(view, parent, false);
         return new PlayerViewHolder(mItemView, this);
     }
 

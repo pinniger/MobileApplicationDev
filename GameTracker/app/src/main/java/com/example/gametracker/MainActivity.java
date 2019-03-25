@@ -1,18 +1,15 @@
 package com.example.gametracker;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -43,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         Player p1 = new Player("Clair Inniger","Developers", "@drawable/profile_woman");
         p1.setScore(75);
 
-        ImageView civ = (ImageView) findViewById(R.id.profile_image);
+        ImageView civ = findViewById(R.id.profile_image);
         civ.setImageResource(R.drawable.profile_woman);
 
         TextView name = findViewById(R.id.text_player_one);

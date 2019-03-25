@@ -25,7 +25,8 @@ public class players extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        List<Player> list = PlayerRepository.GetAll();
+        PlayerRepository playersRepo = new PlayerRepository();
+        List<Player> list = playersRepo.GetAll();
 
         setContentView(R.layout.activity_players);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -42,28 +43,16 @@ public class players extends AppCompatActivity {
             }
         });
 
-        //initTopPlayers();
-
         // Get a handle to the RecyclerView.
         mRecyclerView = findViewById(R.id.players_recycler_view);
         // Create an adapter and supply the data to be displayed.
-        mAdapter = new PlayersListAdapter(this, list);
+        mAdapter = new PlayersListAdapter(this, list, R.layout.playerlist_item);
         // Connect the adapter with the RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
         // Give the RecyclerView a default layout manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private void initTopPlayers() {
-        Player p1 = new Player("Clair Inniger","Developers", "@drawable/profile_woman");
-        p1.setScore(75);
-
-        ImageView civ = (ImageView) findViewById(R.id.profile_image);
-        civ.setImageResource(R.drawable.profile_woman);
-
-        TextView name = findViewById(R.id.text_player_one);
-        name.setText(p1.getName());
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

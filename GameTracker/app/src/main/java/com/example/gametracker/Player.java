@@ -1,9 +1,12 @@
 package com.example.gametracker;
 
 public class Player {
+    private int id;
     private String name;
     private String group;
     private String image;
+    private int score;
+    private int rank;
 
     public int getRank() {
         return rank;
@@ -12,9 +15,6 @@ public class Player {
     public void setRank(int rank) {
         this.rank = rank;
     }
-
-    private int score;
-    private int rank;
 
     public int getScore() {
         return score;
