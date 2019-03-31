@@ -83,5 +83,13 @@ public class Player {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public void setId(int value) {
+        this.id = value;
+    }
+
+    public int getId() {
+        return this.id;
+    }
 }
 

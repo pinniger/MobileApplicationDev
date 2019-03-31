@@ -3,21 +3,20 @@ package com.example.gametracker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.List;
 
 public class players extends AppCompatActivity {
 
+    private static final String TAG = "Players Class";
     private RecyclerView mRecyclerView;
     private PlayersListAdapter mAdapter;
 
@@ -25,32 +24,42 @@ public class players extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        PlayerRepository playersRepo = new PlayerRepository();
-        List<Player> list = playersRepo.GetAll();
+        try {
+            //PlayerRepositoryMock playersRepo = new PlayerRepositoryMock();
+            //List<Player> list = playersRepo.GetAll();
+            PlayersDataSource pds = new PlayersDataSource(this);
+            pds.open();
+            List<Player> list = pds.getAll();
+            pds.close();
 
-        setContentView(R.layout.activity_players);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("All Players");
-        setSupportActionBar(toolbar);
+            Log.d(TAG, "onCreate: GetAll returned: " + list.size());
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(players.this, new_player.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
+            setContentView(R.layout.activity_players);
+            Toolbar toolbar = findViewById(R.id.toolbar);
+            toolbar.setTitle("All Players");
+            setSupportActionBar(toolbar);
 
-        // Get a handle to the RecyclerView.
-        mRecyclerView = findViewById(R.id.players_recycler_view);
-        // Create an adapter and supply the data to be displayed.
-        mAdapter = new PlayersListAdapter(this, list, R.layout.playerlist_item);
-        // Connect the adapter with the RecyclerView.
-        mRecyclerView.setAdapter(mAdapter);
-        // Give the RecyclerView a default layout manager.
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            FloatingActionButton fab = findViewById(R.id.fab);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(players.this, new_player.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            });
+
+            mRecyclerView = findViewById(R.id.players_recycler_view);
+            mAdapter = new PlayersListAdapter(this, list, R.layout.playerlist_item);
+            mRecyclerView.setAdapter(mAdapter);
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+
+        } catch (Exception e) {
+            Log.d(TAG, "onCreate: Didn't work: " + e.getMessage());
+        }
     }
 
 
@@ -73,13 +82,12 @@ public class players extends AppCompatActivity {
             Intent intent = new Intent(players.this, players.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-            //Toast.makeText(this, "Players action has been clicked", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.action_games) {
             Intent intent = new Intent(players.this, games.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-            //Toast.makeText(this, "Players actioin clicked", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Players action clicked", Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);

@@ -5,19 +5,42 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /*
+        try{
+            PlayersDataSource pds = new PlayersDataSource(this);
+
+            pds.open();
+            List<Player> players = pds.getAll();
+            if (players.isEmpty()){
+                pds.seedPlayers();
+            }
+
+            pds.close();
+
+        } catch (Exception e){
+            Log.d(TAG, "onCreate: Failed " + e.getMessage());
+        }
+*/
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

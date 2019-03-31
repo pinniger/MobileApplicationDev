@@ -54,7 +54,7 @@
             android:text="image" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/editImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -64,7 +64,8 @@
             android:id="@+id/buttonSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save" />
+            android:text="Save"
+            android:onClick="savePlayer"/>
 
         <Button
             android:id="@+id/buttonCancel"

@@ -3,10 +3,10 @@ package com.example.gametracker;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerRepository {
+public class PlayerRepositoryMock {
 
     List<Player> players = new ArrayList<>();
-    public PlayerRepository() {
+    public PlayerRepositoryMock() {
         players.add(new Player("John Doe","Developer", "@drawable/profile_woman"));
         players.add(new Player("Jack Doe","Developer", "@drawable/profile_woman"));
         players.add(new Player("Justin Doe","Developer", "@drawable/profile_woman"));

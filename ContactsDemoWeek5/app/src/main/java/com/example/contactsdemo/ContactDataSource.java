@@ -62,7 +62,7 @@ public class ContactDataSource {
         Contact contact = new Contact();
         String query = "select * from contact where _id = " + id;
         Cursor cursor = database.rawQuery(query, null);
-        if(cursor.moveToFirst()){
+        if(cursor.moveToFirst()) {
             contact.setContactID(cursor.getInt(0));
             contact.setContactName(cursor.getString(1));
             contact.setStreetAddress(cursor.getString(2));
