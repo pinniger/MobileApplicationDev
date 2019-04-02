@@ -7,19 +7,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.util.ColorGenerator;
+
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
 public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.PlayerViewHolder> {
 
-    private final List<Player> playerList = new ArrayList<>();
+    private  List<Player> playerList;
     private LayoutInflater mInflater;
     private int view;
     private Context mContext;
@@ -27,7 +29,7 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
     public PlayersListAdapter(Context context, List<Player> list, int v) {
         mInflater = LayoutInflater.from(context);
         this.view = v;
-        this.playerList.addAll(list);
+        this.playerList = list;
         mContext = context;
     }
 
@@ -41,24 +43,24 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
     public void onBindViewHolder(final PlayerViewHolder holder, final int position) {
         final Player mCurrent = playerList.get(holder.getAdapterPosition());
         holder.nameTextView.setText(mCurrent.getName());
+        editButtonClickListener(holder, mCurrent);
+        deleteButtonClickListener(holder);
 
-        holder.editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, new_player.class);
-                intent.putExtra("id", Integer.toString(mCurrent.getId()));
-                mContext.startActivity(intent);
-                //Toast.makeText(mContext, "You want to edit " + mCurrent.getId(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        ColorGenerator generator = ColorGenerator.MATERIAL;
+        TextDrawable drawable = TextDrawable.builder()
+                .buildRound(mCurrent.getName().substring(0,1), generator.getRandomColor());
 
+        holder.imageView.setImageDrawable(drawable);
+    }
+
+    private void deleteButtonClickListener(final PlayerViewHolder holder) {
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Player deletedPlayer = playerList.get(holder.getAdapterPosition());
                 boolean isDeleted = false;
                 try {
-                    PlayersDataSource pds = new PlayersDataSource(mContext);
+                    DataSourceHelper pds = new DataSourceHelper(mContext);
                     pds.open();
                     isDeleted = pds.deletePlayer(deletedPlayer);
                     pds.close();
@@ -76,7 +78,18 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
                 }
             }
         });
+    }
 
+    private void editButtonClickListener(PlayerViewHolder holder, final Player mCurrent) {
+        holder.editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, new_player.class);
+                intent.putExtra("id", Integer.toString(mCurrent.getId()));
+                mContext.startActivity(intent);
+                //Toast.makeText(mContext, "You want to edit " + mCurrent.getId(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -86,6 +99,7 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
 
     class PlayerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public final TextView nameTextView;
+        public final ImageView imageView;
         public final ImageButton editButton;
         public final ImageButton deleteButton;
         final PlayersListAdapter mAdapter;
@@ -93,6 +107,7 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
         public PlayerViewHolder(View itemView, PlayersListAdapter adapter) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
+            imageView = itemView.findViewById(R.id.image_view);
             editButton = itemView.findViewById(R.id.editButton);
             deleteButton = itemView.findViewById(R.id.deleteButton);
             this.mAdapter = adapter;
@@ -106,12 +121,6 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
             Player player = playerList.get(mPosition);
             Toast.makeText(mContext,"You clicked " + player.getName(), Toast.LENGTH_LONG).show();
 
-            /*
-            String newName = "Clicked! " + player.getName();
-            player.setName(newName);
-            playerList.set(mPosition, player);
-            mAdapter.notifyDataSetChanged();
-            */
         }
     }
 }

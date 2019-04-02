@@ -11,73 +11,77 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class players extends AppCompatActivity {
 
-    private static final String TAG = "Players Class";
+    private static final String TAG = "PlayersClass";
     private RecyclerView mRecyclerView;
     private PlayersListAdapter mAdapter;
+    private List<Player> mPlayers;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        populatePlayers();
+        Log.d(TAG, "onStart: Has been called");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_players);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("All Players");
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(players.this, new_player.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
+        mPlayers = new ArrayList<>();
+        mRecyclerView = findViewById(R.id.players_recycler_view);
+        mAdapter = new PlayersListAdapter(this, mPlayers, R.layout.playerlist_item);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        populatePlayers();
+    }
+
+    private void populatePlayers() {
         try {
-            //PlayerRepositoryMock playersRepo = new PlayerRepositoryMock();
-            //List<Player> list = playersRepo.GetAll();
-            PlayersDataSource pds = new PlayersDataSource(this);
+            mPlayers.clear();
+            DataSourceHelper pds = new DataSourceHelper(this);
             pds.open();
-            List<Player> list = pds.getAll();
+            mPlayers.addAll(pds.getAll());
             pds.close();
-
-            Log.d(TAG, "onCreate: GetAll returned: " + list.size());
-
-            setContentView(R.layout.activity_players);
-            Toolbar toolbar = findViewById(R.id.toolbar);
-            toolbar.setTitle("All Players");
-            setSupportActionBar(toolbar);
-
-            FloatingActionButton fab = findViewById(R.id.fab);
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(players.this, new_player.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }
-            });
-
-            mRecyclerView = findViewById(R.id.players_recycler_view);
-            mAdapter = new PlayersListAdapter(this, list, R.layout.playerlist_item);
-            mRecyclerView.setAdapter(mAdapter);
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-
-
         } catch (Exception e) {
             Log.d(TAG, "onCreate: Didn't work: " + e.getMessage());
         }
+        mAdapter.notifyDataSetChanged();
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_players) {
             Intent intent = new Intent(players.this, players.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -87,9 +91,13 @@ public class players extends AppCompatActivity {
             Intent intent = new Intent(players.this, games.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-            //Toast.makeText(this, "Players action clicked", Toast.LENGTH_SHORT).show();
+            //showToast("Players action clicked");
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

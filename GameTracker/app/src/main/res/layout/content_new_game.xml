@@ -45,13 +45,12 @@
             android:layout_weight="1"
             android:text="First Place:" />
 
-        <EditText
-            android:id="@+id/editFirstPlace"
+        <Spinner
+            android:id="@+id/spinnerFirstPlace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:ems="10" />
 
         <TextView
             android:id="@+id/textView4"
@@ -60,14 +59,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Second Place:" />
-
-        <EditText
-            android:id="@+id/editSecondPlace"
+        <Spinner
+            android:id="@+id/spinnerSecondPlace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:ems="10" />
 
         <TextView
             android:id="@+id/textView5"
@@ -77,13 +74,12 @@
             android:layout_weight="1"
             android:text="Third Place:" />
 
-        <EditText
-            android:id="@+id/editThirdPlace"
+        <Spinner
+            android:id="@+id/spinnerThirdPlace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:ems="10"/>
 
         <Button
             android:id="@+id/buttonSave"

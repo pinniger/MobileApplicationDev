@@ -1,21 +1,30 @@
 package com.example.gametracker;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class games extends AppCompatActivity {
+
+    private static final String TAG = "GamesClass";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +50,7 @@ public class games extends AppCompatActivity {
     private void initGames() {
         Date currentTime = Calendar.getInstance().getTime();
         Game g1 = new Game();
-        g1.setDate(currentTime);
+        //g1.setDate(currentTime);
 
         TextView tv = findViewById(R.id.text_game_one);
         String df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.ENGLISH).format(g1.getDate());

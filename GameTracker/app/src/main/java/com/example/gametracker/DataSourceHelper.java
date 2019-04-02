@@ -12,12 +12,25 @@ import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
-public class PlayersDataSource {
+public class DataSourceHelper {
 
     private SQLiteDatabase database;
     private GameTrackerDBHelper dbHe1per;
 
-    public PlayersDataSource(Context context) {
+    public boolean insertGame (Game game){
+        Log.d(TAG, "insertGame: Inserting " + game.getDate());
+        boolean succeeded = false;
+        try {
+            ContentValues initialValues = setGameValues(game);
+            succeeded = database.insert(dbHe1per.GAMES_TABLE_NAME, null, initialValues) > 0;
+        } catch (Exception e) {
+            // do nothing
+        }
+
+        return succeeded;
+    }
+
+    public DataSourceHelper(Context context) {
         dbHe1per = new GameTrackerDBHelper(context);
     }
 
@@ -32,6 +45,29 @@ public class PlayersDataSource {
         }
 
         return succeeded;
+    }
+
+    public boolean deletePlayer(Player player) {
+        try {
+
+            return database.delete(dbHe1per.PLAYER_TABLE_NAME, dbHe1per.PLAYER_COL_ID + "= ?", new String[] {Integer.toString(player.getId())}) > 0;
+
+        } catch (Exception e) {
+            Log.d(TAG, "getAll: Failed getting players");
+            return false;
+        }
+    }
+
+
+    public Cursor getAllCursor(){
+        try {
+            String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME + ";";
+            return database.rawQuery(query, null);
+
+        } catch (Exception e) {
+            Log.d(TAG, "getAllCursor: Failed getting players");
+            return null;
+        }
     }
 
     public List<Player> getAll(){
@@ -59,40 +95,6 @@ public class PlayersDataSource {
         }
 
         return players;
-    }
-
-
-    private ContentValues setPlayerValues(Player player) {
-        ContentValues initialValues = new ContentValues();
-
-        initialValues.put(dbHe1per.PLAYER_COL_NAME, player.getName());
-        initialValues.put(dbHe1per.PLAYER_COL_GROUP, player.getGroup());
-        initialValues.put(dbHe1per.PLAYER_COL_IMAGE, player.getImage());
-
-        return initialValues;
-    }
-
-
-
-    public void open() throws SQLException {
-        database = dbHe1per.getWritableDatabase();
-    }
-
-    public void close() {
-        dbHe1per.close();
-    }
-
-
-
-    public boolean deletePlayer(Player player) {
-        try {
-
-            return database.delete(dbHe1per.PLAYER_TABLE_NAME, dbHe1per.PLAYER_COL_ID + "= ?", new String[] {Integer.toString(player.getId())}) > 0;
-
-        } catch (Exception e) {
-            Log.d(TAG, "getAll: Failed getting players");
-            return false;
-        }
     }
 
     public Player getPlayer(int id) {
@@ -139,4 +141,34 @@ public class PlayersDataSource {
             Log.d(TAG, "seedPlayers: " + e.getMessage());
         }
     }
+
+    private ContentValues setPlayerValues(Player player) {
+        ContentValues values = new ContentValues();
+
+        values.put(dbHe1per.PLAYER_COL_NAME, player.getName());
+        values.put(dbHe1per.PLAYER_COL_GROUP, player.getGroup());
+        values.put(dbHe1per.PLAYER_COL_IMAGE, player.getImage());
+
+        return values;
+    }
+
+    private ContentValues setGameValues(Game game) {
+        ContentValues values = new ContentValues();
+
+        values.put(dbHe1per.GAMES_COL_DATEPLAYED, game.getDate());
+        values.put(dbHe1per.GAMES_COL_FIRST_PLACE, game.getFirstPlace());
+        values.put(dbHe1per.GAMES_COL_SECOND_PLACE, game.getSecondPlace());
+        values.put(dbHe1per.GAMES_COL_THRID_PLACE, game.getThirdPlace());
+
+        return values;
+    }
+
+    public void open() throws SQLException {
+        database = dbHe1per.getWritableDatabase();
+    }
+
+    public void close() {
+        dbHe1per.close();
+    }
+
 }

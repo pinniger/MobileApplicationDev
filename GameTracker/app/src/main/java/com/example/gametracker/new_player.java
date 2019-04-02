@@ -2,14 +2,11 @@ package com.example.gametracker;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +31,7 @@ public class new_player extends AppCompatActivity {
 
         } else {
             try {
-                PlayersDataSource pds = new PlayersDataSource(this);
+                DataSourceHelper pds = new DataSourceHelper(this);
                 pds.open();
                 currentPlayer = pds.getPlayer(Integer.parseInt(id));
                 pds.close();
@@ -45,11 +42,11 @@ public class new_player extends AppCompatActivity {
 
             TextView name = findViewById(R.id.editName);
             TextView group = findViewById(R.id.editGroup);
-            TextView image = findViewById(R.id.editImage);
+            //TextView image = findViewById(R.id.editImage);
 
             name.setText(currentPlayer.getName());
             group.setText(currentPlayer.getGroup());
-            image.setText(currentPlayer.getImage());
+            //image.setText(currentPlayer.getImage());
         }
 
         setSupportActionBar(toolbar);
@@ -78,9 +75,8 @@ public class new_player extends AppCompatActivity {
                 currentPlayer.setGroup(group.getText().toString());
                 currentPlayer.setImage(image);
 
-
                 try {
-                    PlayersDataSource pds = new PlayersDataSource(new_player.this);
+                    DataSourceHelper pds = new DataSourceHelper(new_player.this);
                     pds.open();
                     if (currentPlayer.getId() < 0) {
                         if(pds.insertPlayer(currentPlayer)){
@@ -94,13 +90,10 @@ public class new_player extends AppCompatActivity {
                 } catch (Exception e) {
                     Log.d(TAG, "savePlayer: " + e.getMessage());
                 }
+
+                finish();
             }
         });
     }
 
-
-    public void savePlayer(View view) {
-
-
-    }
 }

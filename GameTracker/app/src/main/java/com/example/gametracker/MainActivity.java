@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         /*
         try{
-            PlayersDataSource pds = new PlayersDataSource(this);
+            DataSourceHelper pds = new DataSourceHelper(this);
 
             pds.open();
             List<Player> players = pds.getAll();

@@ -1,10 +1,7 @@
 package com.example.gametracker;
 
-
-import java.util.Date;
-
 public class Game {
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -12,43 +9,43 @@ public class Game {
 
     }
 
-    public Game(Date date, Player firstPlace, Player secondPlace, Player thirdPlace) {
+    public Game(String date, int firstPlace, int secondPlace, int thirdPlace) {
         this.date = date;
         this.firstPlace = firstPlace;
         this.secondPlace = secondPlace;
         this.thirdPlace = thirdPlace;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Player getFirstPlace() {
+    public int getFirstPlace() {
         return firstPlace;
     }
 
-    public void setFirstPlace(Player firstPlace) {
+    public void setFirstPlace(int firstPlace) {
         this.firstPlace = firstPlace;
     }
 
-    public Player getSecondPlace() {
+    public int getSecondPlace() {
         return secondPlace;
     }
 
-    public void setSecondPlace(Player secondPlace) {
+    public void setSecondPlace(int secondPlace) {
         this.secondPlace = secondPlace;
     }
 
-    public Player getThirdPlace() {
+    public int getThirdPlace() {
         return thirdPlace;
     }
 
-    public void setThirdPlace(Player thirdPlace) {
+    public void setThirdPlace(int thirdPlace) {
         this.thirdPlace = thirdPlace;
     }
 
-    private Date date;
-    private Player firstPlace;
-    private Player secondPlace;
-    private Player thirdPlace;
+    private String date;
+    private int firstPlace;
+    private int secondPlace;
+    private int thirdPlace;
 }
