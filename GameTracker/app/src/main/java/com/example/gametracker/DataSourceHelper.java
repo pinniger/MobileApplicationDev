@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
@@ -53,7 +55,7 @@ public class DataSourceHelper {
             return database.delete(dbHe1per.PLAYER_TABLE_NAME, dbHe1per.PLAYER_COL_ID + "= ?", new String[] {Integer.toString(player.getId())}) > 0;
 
         } catch (Exception e) {
-            Log.d(TAG, "getAll: Failed getting players");
+            Log.d(TAG, "deletePlayer: " + e.getMessage());
             return false;
         }
     }
@@ -71,12 +73,10 @@ public class DataSourceHelper {
     }
 
     public List<Player> getAll(){
-        Log.d(TAG, "getAll: Getting all players");
         List<Player> players = new ArrayList<>();
         try {
             String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME + ";";
             Cursor cursor = database.rawQuery(query, null);
-            Log.d(TAG, "getAll: Feteched this many players: " + cursor.getCount());
             while(cursor.moveToNext()){
                 Log.d(TAG, "getAll: adding player " + cursor.getInt(0));
                 Player p = new Player();
@@ -171,4 +171,40 @@ public class DataSourceHelper {
         dbHe1per.close();
     }
 
+    public boolean deleteGame(Game game) {
+        try {
+
+            return database.delete(dbHe1per.GAMES_TABLE_NAME, dbHe1per.GAMES_COL_ID + "= ?", new String[] {Integer.toString(game.getId())}) > 0;
+
+        } catch (Exception e) {
+            Log.d(TAG, "deleteGame: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public List<Game> getAllGames() {
+        List<Game> games = new ArrayList<>();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        try {
+            String query = "select * from " + dbHe1per.GAMES_TABLE_NAME + " order by " + dbHe1per.GAMES_COL_ID + " desc;";
+            Cursor cursor = database.rawQuery(query, null);
+            while(cursor.moveToNext()){
+                Game game = new Game();
+                game.setId(cursor.getInt(0));
+                game.setDate(cursor.getString(1));
+                game.setFirstPlace(cursor.getInt(2));
+                game.setSecondPlace(cursor.getInt(3));
+                game.setThirdPlace(cursor.getInt(4));
+
+                games.add(game);
+            }
+
+            cursor.close();
+
+        } catch (Exception e) {
+            Log.d(TAG, "getAllGames: Failed getting players");
+        }
+
+        return games;
+    }
 }

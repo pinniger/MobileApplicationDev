@@ -21,12 +21,11 @@
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/text_game_one"
+        android:id="@+id/gameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Game One" />
+        android:gravity="center" />
 
     <!-- This is view is needed to right align the score -->
 
@@ -36,7 +35,7 @@
         android:layout_weight="1" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/gameEditButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -45,7 +44,7 @@
         app:srcCompat="@drawable/ic_edit_blue_24dp" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/gameDeleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"

@@ -6,7 +6,7 @@ public class Game {
     }
 
     public Game() {
-
+        this.id = -1;
     }
 
     public Game(String date, int firstPlace, int secondPlace, int thirdPlace) {
@@ -44,8 +44,17 @@ public class Game {
         this.thirdPlace = thirdPlace;
     }
 
+    private int id;
     private String date;
     private int firstPlace;
     private int secondPlace;
     private int thirdPlace;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
