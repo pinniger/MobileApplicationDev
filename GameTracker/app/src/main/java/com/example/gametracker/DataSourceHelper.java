@@ -111,10 +111,101 @@ public class DataSourceHelper {
 
             return player;
         } catch (Exception e) {
-            Log.d(TAG, "getAll: Failed getting players");
+            Log.d(TAG, "getPlayer: " + e.getMessage());
             return null;
         }
+    }
 
+    public PlayerDetail getPlayerDetail(int id) {
+        try {
+            PlayerDetail player = new PlayerDetail();
+            String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME + " where _id = " + id;
+            Cursor cursor = database.rawQuery(query, null);
+            if (cursor.moveToFirst()){
+                player.setId(cursor.getInt(0));
+                player.setName(cursor.getString(1));
+                player.setGroup(cursor.getString(2));
+                cursor.close();
+            }
+
+            // get first place finishes
+            query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_FIRST_PLACE + " = " + id;
+            cursor = database.rawQuery(query, null);
+            if (cursor.moveToFirst()){
+                player.setFirstPlaceFinishes(cursor.getInt(0));
+                cursor.close();
+            }
+
+            // get second place finishes
+            query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_SECOND_PLACE + " = " + id;
+            cursor = database.rawQuery(query, null);
+            if (cursor.moveToFirst()){
+                player.setSecondPlaceFinishes(cursor.getInt(0));
+                cursor.close();
+            }
+
+            // get third place finishes
+            query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_THRID_PLACE + " = " + id;
+            cursor = database.rawQuery(query, null);
+            if (cursor.moveToFirst()){
+                player.setThirdPlaceFinishes(cursor.getInt(0));
+                cursor.close();
+            }
+
+
+            return player;
+        } catch (Exception e) {
+            Log.d(TAG, "getPlayerDetail: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public List<PlayerDetail> getAllPlayerDetail() {
+
+        List<PlayerDetail> topPlayers = new ArrayList<>();
+        try {
+            PlayerDetail player = new PlayerDetail();
+            String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME;
+
+            Cursor cursor = database.rawQuery(query, null);
+            while (cursor.moveToNext()) {
+                int id = cursor.getInt(0);
+                player.setId(cursor.getInt(0));
+                player.setName(cursor.getString(1));
+                player.setGroup(cursor.getString(2));
+
+                // get first place finishes
+                query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_FIRST_PLACE + " = " + id;
+                Cursor cursor1 = database.rawQuery(query, null);
+                if (cursor1.moveToFirst()) {
+                    player.setFirstPlaceFinishes(cursor1.getInt(0));
+                    cursor1.close();
+                }
+
+                // get second place finishes
+                query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_SECOND_PLACE + " = " + id;
+                Cursor cursor2 = database.rawQuery(query, null);
+                if (cursor2.moveToFirst()) {
+                    player.setSecondPlaceFinishes(cursor2.getInt(0));
+                    cursor2.close();
+                }
+
+                // get third place finishes
+                query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_THRID_PLACE + " = " + id;
+                Cursor cursor3 = database.rawQuery(query, null);
+                if (cursor3.moveToFirst()) {
+                    player.setThirdPlaceFinishes(cursor3.getInt(0));
+                    cursor3.close();
+                }
+
+                topPlayers.add(player);
+            }
+            cursor.close();
+            return topPlayers;
+        } catch (Exception e) {
+            Log.d(TAG, "getAllPlayerDetail: " + e.getMessage());
+            return null;
+        }
     }
 
     public boolean updatePlayer(Player player) {
@@ -227,4 +318,5 @@ public class DataSourceHelper {
 
         return winners;
     }
+
 }

@@ -42,11 +42,9 @@ public class new_player extends AppCompatActivity {
 
             TextView name = findViewById(R.id.editName);
             TextView group = findViewById(R.id.editGroup);
-            //TextView image = findViewById(R.id.editImage);
 
             name.setText(currentPlayer.getName());
             group.setText(currentPlayer.getGroup());
-            //image.setText(currentPlayer.getImage());
         }
 
         setSupportActionBar(toolbar);

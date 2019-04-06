@@ -20,9 +20,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private RecyclerView mRecyclerView;
-    private RecentWinnersListAdapter mAdapter;
+    private RecyclerView mRecentWinnersRecyclerView;
+    private RecentWinnersListAdapter mWinnersListAdapter;
     private List<RecentWinner> mRecentWinners;
+
+    private RecyclerView mTopPlayersRecyclerView;
+    private RecentWinnersListAdapter mTopPlayersListAdapter;
+    private List<PlayerDetail> mTopPlayers;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +49,28 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mRecentWinners = new ArrayList<>();
-        mRecyclerView = findViewById(R.id.recent_winners_recycler_view);
-        mAdapter = new RecentWinnersListAdapter(this, mRecentWinners, R.layout.recentwinners_item);
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(layoutManager);
+        mRecentWinnersRecyclerView = findViewById(R.id.recent_winners_recycler_view);
+        mWinnersListAdapter = new RecentWinnersListAdapter(this, mRecentWinners, R.layout.recentwinners_item);
+        mRecentWinnersRecyclerView.setAdapter(mWinnersListAdapter);
+        mRecentWinnersRecyclerView.setLayoutManager(layoutManager);
+
+        mTopPlayers = new ArrayList<>();
 
         initProfileImage();
+        populateTopPlayers();
         populateRecentWinners();
+    }
+
+    private void populateTopPlayers() {
+        try {
+        mTopPlayers.clear();
+        DataSourceHelper pds = new DataSourceHelper(this);
+        pds.open();
+        mTopPlayers.addAll(pds.getAllPlayerDetail());
+        pds.close();
+    } catch (Exception e) {
+        Log.d(TAG, "populateRecentWinners: Didn't work: " + e.getMessage());
+    }
     }
 
     private void populateRecentWinners() {
@@ -64,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.d(TAG, "populateRecentWinners: Didn't work: " + e.getMessage());
         }
-        mAdapter.notifyDataSetChanged();
+        mWinnersListAdapter.notifyDataSetChanged();
     }
 
     private void initProfileImage() {
