@@ -10,33 +10,28 @@ public class PlayerDetail extends Player{
     }
 
 
-    @Override
     public int getFirstPlaceFinishes() {
         return firstPlaceFinishes;
     }
 
-    @Override
     public void setFirstPlaceFinishes(int firstPlaceFinishes) {
         this.firstPlaceFinishes = firstPlaceFinishes;
     }
 
-    @Override
     public int getSecondPlaceFinishes() {
         return secondPlaceFinishes;
     }
 
-    @Override
     public void setSecondPlaceFinishes(int secondPlaceFinishes) {
         this.secondPlaceFinishes = secondPlaceFinishes;
     }
 
-    @Override
     public int getThirdPlaceFinishes() {
         return thirdPlaceFinishes;
     }
 
-    @Override
     public void setThirdPlaceFinishes(int thirdPlaceFinishes) {
         this.thirdPlaceFinishes = thirdPlaceFinishes;
     }
+
 }

@@ -23,10 +23,13 @@ public class profile extends AppCompatActivity {
         initProfile();
     }
 
+
     private void initProfile() {
-        Player p1 = new Player("Clair Inniger","Developers", "@drawable/profile_woman");
-        p1.setScore(75);
+        PlayerDetail p1 = new PlayerDetail();
+
         p1.setRank(2);
+        p1.setName("Clair Inniger");
+        p1.setGroup("Developers");
         p1.setFirstPlaceFinishes(8);
         p1.setSecondPlaceFinishes(12);
         p1.setThirdPlaceFinishes(4);
@@ -38,7 +41,7 @@ public class profile extends AppCompatActivity {
         group.setText(p1.getGroup());
 
         TextView points = findViewById(R.id.textPointsNumber);
-        points.setText(Integer.toString(p1.getScore()));
+        points.setText(Integer.toString(p1.getTotalScore()));
 
         TextView rank = findViewById(R.id.textRankNumber);
         rank.setText(Integer.toString(p1.getRank()));

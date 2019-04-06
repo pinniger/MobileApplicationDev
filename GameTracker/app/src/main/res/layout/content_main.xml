@@ -23,154 +23,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Top Players"
-                android:textSize="24sp" />
+                android:text="@string/text_top_players"
+                android:textSize="20sp" />
 
-            <LinearLayout
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_top_winners"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:orientation="horizontal">
-
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_image"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    android:src="@drawable/profile_woman"
-
-                    app:civ_border_color="#FF000000"
-                    app:civ_border_width="2dp" />
-
-                <!-- This is view is needed to center align the name -->
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/text_player_one"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Player One" />
-
-                <!-- This is view is needed to right align the score -->
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/text_player_one_score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="right"
-                    android:text="75"
-                    android:textAlignment="gravity"
-                    android:textColor="@color/colorAccent" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:orientation="horizontal">
-
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_image_two"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    android:src="@drawable/profile_woman"
-                    app:civ_border_color="#FF000000"
-                    app:civ_border_width="2dp" />
-
-                <!-- This is view is needed to center align the name -->
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/text_player_two"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-
-                    android:text="Player Two" />
-
-                <!-- This is view is needed to right align the score -->
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/text_player_two_score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="right"
-                    android:text="60"
-                    android:textAlignment="gravity"
-                    android:textColor="@color/colorAccent" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:orientation="horizontal">
-
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_image_three"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    android:src="@drawable/profile_woman"
-                    app:civ_border_color="#FF000000"
-                    app:civ_border_width="2dp" />
-
-                <!-- This is view is needed to center align the name -->
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/text_player_three"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Player Three" />
-
-                <!-- This is view is needed to right align the score -->
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/text_player_three_score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="right"
-                    android:text="50"
-                    android:textAlignment="gravity"
-                    android:textColor="@color/colorAccent" />
-            </LinearLayout>
+                android:layout_height="match_parent" >
+            </android.support.v7.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/text_recentWinners"
@@ -178,12 +38,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorPrimary"
-                android:text="Recent Winners"
+                android:text="@string/text_recent_winners"
                 android:textColor="#ffffff"
                 android:textSize="24sp" />
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recent_winners_recycler_view"
+                android:id="@+id/recycler_view_recent_winners"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/colorPrimary">

@@ -8,4 +8,6 @@
     <string name="title_activity_profile">profile</string>
     <string name="title_activity_new_player">new_player</string>
     <string name="title_activity_new_game">new_game</string>
+    <string name="text_recent_winners">Recent Winners</string>
+    <string name="text_top_players">Top Players</string>
 </resources>

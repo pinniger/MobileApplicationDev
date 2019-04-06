@@ -164,43 +164,46 @@ public class DataSourceHelper {
 
         List<PlayerDetail> topPlayers = new ArrayList<>();
         try {
-            PlayerDetail player = new PlayerDetail();
+
             String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME;
 
-            Cursor cursor = database.rawQuery(query, null);
-            while (cursor.moveToNext()) {
-                int id = cursor.getInt(0);
-                player.setId(cursor.getInt(0));
-                player.setName(cursor.getString(1));
-                player.setGroup(cursor.getString(2));
+            Cursor allPlayersCursor = database.rawQuery(query, null);
+            while (allPlayersCursor.moveToNext()) {
+                PlayerDetail player = new PlayerDetail();
+                int id = allPlayersCursor.getInt(0);
+                player.setId(allPlayersCursor.getInt(0));
+                player.setName(allPlayersCursor.getString(1));
+                player.setGroup(allPlayersCursor.getString(2));
 
                 // get first place finishes
                 query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_FIRST_PLACE + " = " + id;
-                Cursor cursor1 = database.rawQuery(query, null);
-                if (cursor1.moveToFirst()) {
-                    player.setFirstPlaceFinishes(cursor1.getInt(0));
-                    cursor1.close();
+                Cursor firstPlaceCursor = database.rawQuery(query, null);
+                if (firstPlaceCursor.moveToFirst()) {
+                    player.setFirstPlaceFinishes(firstPlaceCursor.getInt(0));
+                    firstPlaceCursor.close();
                 }
 
                 // get second place finishes
                 query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_SECOND_PLACE + " = " + id;
-                Cursor cursor2 = database.rawQuery(query, null);
-                if (cursor2.moveToFirst()) {
-                    player.setSecondPlaceFinishes(cursor2.getInt(0));
-                    cursor2.close();
+                Cursor secondPlaceCursor = database.rawQuery(query, null);
+                if (secondPlaceCursor.moveToFirst()) {
+                    player.setSecondPlaceFinishes(secondPlaceCursor.getInt(0));
+                    secondPlaceCursor.close();
                 }
 
                 // get third place finishes
                 query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_THRID_PLACE + " = " + id;
-                Cursor cursor3 = database.rawQuery(query, null);
-                if (cursor3.moveToFirst()) {
-                    player.setThirdPlaceFinishes(cursor3.getInt(0));
-                    cursor3.close();
+                Cursor thirdPlceCursor = database.rawQuery(query, null);
+                if (thirdPlceCursor.moveToFirst()) {
+                    player.setThirdPlaceFinishes(thirdPlceCursor.getInt(0));
+                    thirdPlceCursor.close();
                 }
 
                 topPlayers.add(player);
             }
-            cursor.close();
+
+            allPlayersCursor.close();
+
             return topPlayers;
         } catch (Exception e) {
             Log.d(TAG, "getAllPlayerDetail: " + e.getMessage());

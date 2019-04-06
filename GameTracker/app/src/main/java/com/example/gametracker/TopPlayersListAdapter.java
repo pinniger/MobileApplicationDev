@@ -12,34 +12,33 @@ import android.widget.Toast;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
-public class RecentWinnersListAdapter extends RecyclerView.Adapter<RecentWinnersListAdapter.RecentWinnersViewHolder> {
-
-    private List<RecentWinner> mRecentWinners;
+public class TopPlayersListAdapter extends RecyclerView.Adapter<TopPlayersListAdapter.TopPlayersViewHolder> {
+    private List<PlayerDetail> mTopPlayers;
     private LayoutInflater mInflater;
     private int mView;
     private Context mContext;
 
-    public RecentWinnersListAdapter(Context context, List<RecentWinner> list, int v) {
+    public TopPlayersListAdapter(Context context, List<PlayerDetail> list, int v) {
         this.mInflater = LayoutInflater.from(context);
         this.mView = v;
-        this.mRecentWinners = list;
+        this.mTopPlayers = list;
         this.mContext = context;
     }
 
     @Override
-    public RecentWinnersViewHolder onCreateViewHolder(ViewGroup parent, int i) {
+    public TopPlayersListAdapter.TopPlayersViewHolder onCreateViewHolder(ViewGroup parent, int i) {
         View mItemView = mInflater.inflate(mView, parent, false);
-        return new RecentWinnersViewHolder(mItemView, this);
+        return new TopPlayersListAdapter.TopPlayersViewHolder(mItemView, this);
     }
 
     @Override
-    public void onBindViewHolder(final RecentWinnersViewHolder holder, final int position) {
-        final RecentWinner mCurrent = mRecentWinners.get(holder.getAdapterPosition());
+    public void onBindViewHolder(final TopPlayersListAdapter.TopPlayersViewHolder holder, final int position) {
+        final PlayerDetail mCurrent = mTopPlayers.get(holder.getAdapterPosition());
         holder.nameTextView.setText(mCurrent.getName());
-        holder.dateTextView.setText(new SimpleDateFormat("MMMM dd").format(mCurrent.getDate()));
+        int playerScore = mCurrent.getTotalScore();
+        holder.scoreTextView.setText(Integer.toString(playerScore));
 
         ColorGenerator generator = ColorGenerator.MATERIAL;
         TextDrawable drawable = TextDrawable.builder()
@@ -50,20 +49,20 @@ public class RecentWinnersListAdapter extends RecyclerView.Adapter<RecentWinners
 
     @Override
     public int getItemCount() {
-        return mRecentWinners.size();
+        return mTopPlayers.size();
     }
 
-    class RecentWinnersViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public final TextView dateTextView;
+    class TopPlayersViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public final TextView nameTextView;
+        public final TextView scoreTextView;
         public final ImageView imageView;
-        final RecentWinnersListAdapter mAdapter;
+        final TopPlayersListAdapter mAdapter;
 
-        public RecentWinnersViewHolder(View itemView, RecentWinnersListAdapter adapter) {
+        public TopPlayersViewHolder(View itemView, TopPlayersListAdapter adapter) {
             super(itemView);
-            dateTextView = itemView.findViewById(R.id.text_recent_winners_date);
-            nameTextView = itemView.findViewById(R.id.text_recent_winners_name);
-            imageView = itemView.findViewById(R.id.image_recent_winners);
+            this.nameTextView = itemView.findViewById(R.id.text_top_players_name);
+            this.scoreTextView = itemView.findViewById(R.id.text_top_players_score);
+            this.imageView = itemView.findViewById(R.id.image_top_players);
             this.mAdapter = adapter;
             itemView.setOnClickListener(this);
         }
@@ -71,7 +70,7 @@ public class RecentWinnersListAdapter extends RecyclerView.Adapter<RecentWinners
         @Override
         public void onClick(View v) {
             int mPosition = getLayoutPosition();
-            RecentWinner player = mRecentWinners.get(mPosition);
+            PlayerDetail player = mTopPlayers.get(mPosition);
             Toast.makeText(mContext, "You clicked " + player.getName(), Toast.LENGTH_LONG).show();
         }
     }

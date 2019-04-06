@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private List<RecentWinner> mRecentWinners;
 
     private RecyclerView mTopPlayersRecyclerView;
-    private RecentWinnersListAdapter mTopPlayersListAdapter;
+    private TopPlayersListAdapter mTopPlayersListAdapter;
     private List<PlayerDetail> mTopPlayers;
 
     @Override
@@ -36,6 +38,28 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        initFab();
+
+
+        // top players list
+        mTopPlayers = new ArrayList<>();
+        mTopPlayersRecyclerView = findViewById(R.id.recycler_view_top_winners);
+        mTopPlayersListAdapter = new TopPlayersListAdapter(this, mTopPlayers, R.layout.topplayerslist_item);
+        mTopPlayersRecyclerView.setAdapter(mTopPlayersListAdapter);
+        mTopPlayersRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        // recent winners list
+        mRecentWinners = new ArrayList<>();
+        mRecentWinnersRecyclerView = findViewById(R.id.recycler_view_recent_winners);
+        mWinnersListAdapter = new RecentWinnersListAdapter(this, mRecentWinners, R.layout.recentwinners_item);
+        mRecentWinnersRecyclerView.setAdapter(mWinnersListAdapter);
+        mRecentWinnersRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        populateTopPlayers();
+        populateRecentWinners();
+    }
+
+    private void initFab() {
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,32 +69,35 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        mRecentWinners = new ArrayList<>();
-        mRecentWinnersRecyclerView = findViewById(R.id.recent_winners_recycler_view);
-        mWinnersListAdapter = new RecentWinnersListAdapter(this, mRecentWinners, R.layout.recentwinners_item);
-        mRecentWinnersRecyclerView.setAdapter(mWinnersListAdapter);
-        mRecentWinnersRecyclerView.setLayoutManager(layoutManager);
-
-        mTopPlayers = new ArrayList<>();
-
-        initProfileImage();
+    @Override
+    protected void onStart() {
+        super.onStart();
         populateTopPlayers();
         populateRecentWinners();
     }
 
     private void populateTopPlayers() {
+        //List<PlayerDetail> temp = new ArrayList<>();
         try {
-        mTopPlayers.clear();
-        DataSourceHelper pds = new DataSourceHelper(this);
-        pds.open();
-        mTopPlayers.addAll(pds.getAllPlayerDetail());
-        pds.close();
-    } catch (Exception e) {
-        Log.d(TAG, "populateRecentWinners: Didn't work: " + e.getMessage());
-    }
+            mTopPlayers.clear();
+            DataSourceHelper pds = new DataSourceHelper(this);
+            pds.open();
+            mTopPlayers.addAll(pds.getAllPlayerDetail().subList(0,3));
+            pds.close();
+        } catch (Exception e) {
+            Log.d(TAG, "populateRecentWinners: Didn't work: " + e.getMessage());
+        }
+        // sort by total score descending
+        Collections.sort(mTopPlayers, new Comparator<PlayerDetail>() {
+            @Override
+            public int compare(PlayerDetail o1, PlayerDetail o2) {
+                return o2.getTotalScore() - o1.getTotalScore();
+            }
+        });
+
+        mTopPlayersListAdapter.notifyDataSetChanged();
     }
 
     private void populateRecentWinners() {
@@ -84,21 +111,11 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.d(TAG, "populateRecentWinners: Didn't work: " + e.getMessage());
         }
+
+
         mWinnersListAdapter.notifyDataSetChanged();
     }
 
-    private void initProfileImage() {
-        CircleImageView profileImage = findViewById(R.id.profile_image);
-        profileImage.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(MainActivity.this, profile.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-
-        });
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

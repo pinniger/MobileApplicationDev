@@ -3,24 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="6dp"
-    >
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/profile_image"
-        android:layout_width="96dp"
+    android:padding="6dp" >
+
+    <ImageView android:layout_width="96dp"
         android:layout_height="96dp"
-        android:src="@drawable/profile_woman"
-        app:civ_border_color="#FF000000"
-        app:civ_border_width="2dp" />
+        android:id="@+id/image_top_players"/>
 
     <TextView
-        android:id="@+id/nameTextView"
+        android:id="@+id/text_top_players_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="20dp"
-        android:gravity="center"
-        android:text="Player One" />
+        android:gravity="center" />
 
     <View
         android:layout_width="0dp"
@@ -28,12 +23,11 @@
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/text_player_one_score"
+        android:id="@+id/text_top_players_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="right"
-        android:text="75"
         android:textAlignment="gravity"
         android:textColor="@color/colorAccent" />
 

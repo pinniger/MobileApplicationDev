@@ -7,11 +7,11 @@ public class PlayerRepositoryMock {
 
     List<Player> players = new ArrayList<>();
     public PlayerRepositoryMock() {
-        players.add(new Player("John Doe","Developer", "@drawable/profile_woman"));
-        players.add(new Player("Jack Doe","Developer", "@drawable/profile_woman"));
-        players.add(new Player("Justin Doe","Developer", "@drawable/profile_woman"));
-        players.add(new Player("Jenna Doe","Reporting", "@drawable/profile_woman"));
-        players.add(new Player("Jane Doe","Reporting", "@drawable/profile_woman"));
+        players.add(new Player("John Doe","Developer"));
+        players.add(new Player("Jack Doe","Developer"));
+        players.add(new Player("Justin Doe","Developer"));
+        players.add(new Player("Jenna Doe","Reporting"));
+        players.add(new Player("Jane Doe","Reporting"));
 
     }
 
