@@ -83,7 +83,6 @@ public class DataSourceHelper {
                 p.setId(cursor.getInt(0));
                 p.setName(cursor.getString(1));
                 p.setGroup(cursor.getString(2));
-                p.setImage(cursor.getString(3));
 
                 players.add(p);
             }
@@ -106,7 +105,6 @@ public class DataSourceHelper {
                 player.setId(cursor.getInt(0));
                 player.setName(cursor.getString(1));
                 player.setGroup(cursor.getString(2));
-                player.setImage(cursor.getString(3));
 
                 cursor.close();
             }
@@ -155,7 +153,7 @@ public class DataSourceHelper {
     private ContentValues setGameValues(Game game) {
         ContentValues values = new ContentValues();
 
-        values.put(dbHe1per.GAMES_COL_DATEPLAYED, game.getDate());
+        values.put(dbHe1per.GAMES_COL_DATEPLAYED, game.getDateString());
         values.put(dbHe1per.GAMES_COL_FIRST_PLACE, game.getFirstPlace());
         values.put(dbHe1per.GAMES_COL_SECOND_PLACE, game.getSecondPlace());
         values.put(dbHe1per.GAMES_COL_THRID_PLACE, game.getThirdPlace());
@@ -184,14 +182,14 @@ public class DataSourceHelper {
 
     public List<Game> getAllGames() {
         List<Game> games = new ArrayList<>();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         try {
-            String query = "select * from " + dbHe1per.GAMES_TABLE_NAME + " order by " + dbHe1per.GAMES_COL_ID + " desc;";
+            String query = "select * from " + dbHe1per.GAMES_TABLE_NAME + " order by " + dbHe1per.GAMES_COL_DATEPLAYED + " desc;";
             Cursor cursor = database.rawQuery(query, null);
             while(cursor.moveToNext()){
                 Game game = new Game();
                 game.setId(cursor.getInt(0));
-                game.setDate(cursor.getString(1));
+                game.setDateString(cursor.getString(1));
                 game.setFirstPlace(cursor.getInt(2));
                 game.setSecondPlace(cursor.getInt(3));
                 game.setThirdPlace(cursor.getInt(4));
@@ -206,5 +204,27 @@ public class DataSourceHelper {
         }
 
         return games;
+    }
+
+    public List<RecentWinner> getRecentWinners(int num){
+
+        List<RecentWinner> winners = new ArrayList<>();
+        String query = "select * from " + dbHe1per.GAMES_TABLE_NAME + " order by " + dbHe1per.GAMES_COL_DATEPLAYED + " desc LIMIT " + num + ";";
+        Cursor cursor = database.rawQuery(query, null);
+
+        while(cursor.moveToNext()){
+
+            // reuse formatter for dates
+            Game game = new Game();
+            game.setDateString(cursor.getString(1));
+
+            // get the first place player for the game
+            Player player = this.getPlayer(cursor.getInt(2));
+
+            RecentWinner rw = new RecentWinner(player.getName(), game.getDate());
+            winners.add(rw);
+        }
+
+        return winners;
     }
 }

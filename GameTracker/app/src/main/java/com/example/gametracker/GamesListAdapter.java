@@ -37,7 +37,7 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
     @Override
     public void onBindViewHolder(final GamesListAdapter.GameViewHolder holder, final int position) {
         final Game mCurrent = mGamesList.get(holder.getAdapterPosition());
-        holder.gameTextView.setText(mCurrent.getDate());
+        holder.gameTextView.setText(mCurrent.getDateString());
         editButtonClickListener(holder, mCurrent);
         deleteButtonClickListener(holder);
     }

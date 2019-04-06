@@ -4,14 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -19,27 +20,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-
+    private RecyclerView mRecyclerView;
+    private RecentWinnersListAdapter mAdapter;
+    private List<RecentWinner> mRecentWinners;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        /*
-        try{
-            DataSourceHelper pds = new DataSourceHelper(this);
-
-            pds.open();
-            List<Player> players = pds.getAll();
-            if (players.isEmpty()){
-                pds.seedPlayers();
-            }
-
-            pds.close();
-
-        } catch (Exception e){
-            Log.d(TAG, "onCreate: Failed " + e.getMessage());
-        }
-*/
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -55,22 +41,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        mRecentWinners = new ArrayList<>();
+        mRecyclerView = findViewById(R.id.recent_winners_recycler_view);
+        mAdapter = new RecentWinnersListAdapter(this, mRecentWinners, R.layout.recentwinners_item);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(layoutManager);
+
         initProfileImage();
-        initTopPlayers();
+        populateRecentWinners();
     }
 
-    private void initTopPlayers() {
-        Player p1 = new Player("Clair Inniger","Developers", "@drawable/profile_woman");
-        p1.setScore(75);
+    private void populateRecentWinners() {
 
-        ImageView civ = findViewById(R.id.profile_image);
-        civ.setImageResource(R.drawable.profile_woman);
-
-        TextView name = findViewById(R.id.text_player_one);
-        name.setText(p1.getName());
-
-        TextView score = findViewById(R.id.text_player_one_score);
-        score.setText(Integer.toString(p1.getScore()));
+        try {
+            mRecentWinners.clear();
+            DataSourceHelper pds = new DataSourceHelper(this);
+            pds.open();
+            mRecentWinners.addAll(pds.getRecentWinners(3));
+            pds.close();
+        } catch (Exception e) {
+            Log.d(TAG, "populateRecentWinners: Didn't work: " + e.getMessage());
+        }
+        mAdapter.notifyDataSetChanged();
     }
 
     private void initProfileImage() {

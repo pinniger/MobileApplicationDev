@@ -78,12 +78,11 @@ public class new_game extends AppCompatActivity {
                 int secondPlaceId = toIntExact(secondPlace.getSelectedItemId());
                 int thirdPlaceId = toIntExact(thirdPlace.getSelectedItemId());
 
-                Game game = new Game(
-                        dateField.getText().toString(),
-                        firstPlaceId,
-                        secondPlaceId,
-                        thirdPlaceId
-                );
+                Game game = new Game();
+                game.setDateString(dateField.getText().toString());
+                game.setFirstPlace(firstPlaceId);
+                game.setSecondPlace(secondPlaceId);
+                game.setThirdPlace(thirdPlaceId);
 
                 try {
                     DataSourceHelper dsh = new DataSourceHelper(mContext);

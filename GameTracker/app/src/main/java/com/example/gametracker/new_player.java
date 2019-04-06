@@ -68,12 +68,8 @@ public class new_player extends AppCompatActivity {
                 TextView name = findViewById(R.id.editName);
                 TextView group = findViewById(R.id.editGroup);
 
-                // TODO: Deal with images later.
-                //TextView image = findViewById(R.id.editImage);
-                String image = "@drawable/profile_woman";
                 currentPlayer.setName(name.getText().toString());
                 currentPlayer.setGroup(group.getText().toString());
-                currentPlayer.setImage(image);
 
                 try {
                     DataSourceHelper pds = new DataSourceHelper(new_player.this);

@@ -21,27 +21,27 @@ import static android.content.ContentValues.TAG;
 
 public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.PlayerViewHolder> {
 
-    private  List<Player> playerList;
+    private  List<Player> mPlayerList;
     private LayoutInflater mInflater;
-    private int view;
+    private int mView;
     private Context mContext;
 
     public PlayersListAdapter(Context context, List<Player> list, int v) {
-        mInflater = LayoutInflater.from(context);
-        this.view = v;
-        this.playerList = list;
-        mContext = context;
+        this.mInflater = LayoutInflater.from(context);
+        this.mView = v;
+        this.mPlayerList = list;
+        this.mContext = context;
     }
 
     @Override
     public PlayerViewHolder onCreateViewHolder(ViewGroup parent, int i) {
-        View mItemView = mInflater.inflate(view, parent, false);
+        View mItemView = mInflater.inflate(mView, parent, false);
         return new PlayerViewHolder(mItemView, this);
     }
 
     @Override
     public void onBindViewHolder(final PlayerViewHolder holder, final int position) {
-        final Player mCurrent = playerList.get(holder.getAdapterPosition());
+        final Player mCurrent = mPlayerList.get(holder.getAdapterPosition());
         holder.nameTextView.setText(mCurrent.getName());
         editButtonClickListener(holder, mCurrent);
         deleteButtonClickListener(holder);
@@ -57,7 +57,7 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Player deletedPlayer = playerList.get(holder.getAdapterPosition());
+                Player deletedPlayer = mPlayerList.get(holder.getAdapterPosition());
                 boolean isDeleted = false;
                 try {
                     DataSourceHelper pds = new DataSourceHelper(mContext);
@@ -70,7 +70,7 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
                 }
 
                 if(isDeleted) {
-                    playerList.remove(holder.getAdapterPosition());
+                    mPlayerList.remove(holder.getAdapterPosition());
                     notifyItemRemoved(holder.getAdapterPosition());
                     Toast.makeText(mContext, deletedPlayer.getName() + " deleted!", Toast.LENGTH_SHORT).show();
                 } else {
@@ -87,14 +87,13 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
                 Intent intent = new Intent(mContext, new_player.class);
                 intent.putExtra("id", Integer.toString(mCurrent.getId()));
                 mContext.startActivity(intent);
-                //Toast.makeText(mContext, "You want to edit " + mCurrent.getId(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return playerList.size();
+        return mPlayerList.size();
     }
 
     class PlayerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -118,7 +117,7 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
         public void onClick(View v) {
 
             int mPosition = getLayoutPosition();
-            Player player = playerList.get(mPosition);
+            Player player = mPlayerList.get(mPosition);
             Toast.makeText(mContext,"You clicked " + player.getName(), Toast.LENGTH_LONG).show();
 
         }

@@ -48,16 +48,13 @@ public class GameTrackerDBHelper extends SQLiteOpenHelper {
 
         String CREATE_TABLE_GAMES_SQL =
                 "create table " + GAMES_TABLE_NAME + " (" + GAMES_COL_ID + " integer primary key autoincrement, "
-                        + GAMES_COL_DATEPLAYED + " text not null, "
+                        + GAMES_COL_DATEPLAYED + " date not null, "
                         + GAMES_COL_FIRST_PLACE + " text, "
                         + GAMES_COL_SECOND_PLACE + " text, "
                         + GAMES_COL_THRID_PLACE + " text);";
 
         db.execSQL(CREATE_TABLE_PLAYERS_SQL);
         db.execSQL(CREATE_TABLE_GAMES_SQL);
-
-        // SEED THE DATABASE TO MAKE TESTING EASIER
-        //seedPlayers();
     }
 
 

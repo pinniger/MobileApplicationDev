@@ -80,10 +80,6 @@ public class Player {
         return image;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public void setId(int value) {
         this.id = value;
     }
