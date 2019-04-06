@@ -5,8 +5,7 @@
     android:orientation="horizontal"
     android:padding="6dp">
 
-    <ImageView android:layout_width="96dp"
-        android:layout_height="96dp"
+    <ImageView style="@style/image_view_letters"
         android:id="@+id/image_view"/>
 
     <TextView

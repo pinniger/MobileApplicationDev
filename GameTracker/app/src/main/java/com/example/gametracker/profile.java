@@ -1,16 +1,28 @@
 package com.example.gametracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.util.ColorGenerator;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class profile extends AppCompatActivity {
+
+    private static final String TAG = "Profile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,41 +31,67 @@ public class profile extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Profile");
         setSupportActionBar(toolbar);
+        Intent intent = getIntent();
 
-        initProfile();
+        int id = intent.getIntExtra("id", -1);
+        List<PlayerDetail> playerList = new ArrayList<>();
+
+        try {
+            DataSourceHelper dsh = new DataSourceHelper(this);
+            dsh.open();
+            playerList = dsh.getAllPlayerDetail();
+            dsh.close();
+        } catch (Exception e) {
+            Log.d(TAG, "initProfile: Didn't work: " + e.getMessage());
+        }
+
+        // sort players decending
+        Collections.sort(playerList);
+
+        // after the players are sorted, we can loop over them until
+        // we find the correct profile to display, this way we can display
+        // the player rank without have to store it, much easier to maintain
+        // than updating every player record every time a game gets created/edited.
+        for(int i = 0; i <= playerList.size(); i++){
+            if (playerList.get(i).getId() == id) {
+                initProfile(playerList.get(i), i + 1);
+                break;
+            }
+        }
     }
 
+    private void initProfile(PlayerDetail player, int rank) {
 
-    private void initProfile() {
-        PlayerDetail p1 = new PlayerDetail();
+        if (player != null) {
+            TextView name = findViewById(R.id.textName);
+            name.setText(player.getName());
 
-        p1.setRank(2);
-        p1.setName("Clair Inniger");
-        p1.setGroup("Developers");
-        p1.setFirstPlaceFinishes(8);
-        p1.setSecondPlaceFinishes(12);
-        p1.setThirdPlaceFinishes(4);
+            TextView group = findViewById(R.id.textGroupName);
+            group.setText(player.getGroup());
 
-        TextView name = findViewById(R.id.textName);
-        name.setText(p1.getName());
+            TextView points = findViewById(R.id.textPointsNumber);
+            points.setText(Integer.toString(player.getTotalScore()));
 
-        TextView group = findViewById(R.id.textGroupName);
-        group.setText(p1.getGroup());
+            TextView rankTextView = findViewById(R.id.textRankNumber);
+            rankTextView.setText(Integer.toString(rank));
 
-        TextView points = findViewById(R.id.textPointsNumber);
-        points.setText(Integer.toString(p1.getTotalScore()));
+            TextView firstPlace = findViewById(R.id.textFirstNumber);
+            firstPlace.setText(Integer.toString(player.getFirstPlaceFinishes()));
 
-        TextView rank = findViewById(R.id.textRankNumber);
-        rank.setText(Integer.toString(p1.getRank()));
+            TextView secondPlace = findViewById(R.id.textSecondNumber);
+            secondPlace.setText(Integer.toString(player.getSecondPlaceFinishes()));
 
-        TextView firstPlace = findViewById(R.id.textFirstNumber);
-        firstPlace.setText(Integer.toString(p1.getFirstPlaceFinishes()));
+            TextView thirdPlace = findViewById(R.id.textThridNumber);
+            thirdPlace.setText(Integer.toString(player.getThirdPlaceFinishes()));
 
-        TextView secondPlace = findViewById(R.id.textSecondNumber);
-        secondPlace.setText(Integer.toString(p1.getSecondPlaceFinishes()));
+            ColorGenerator generator = ColorGenerator.MATERIAL;
+            TextDrawable drawable = TextDrawable.builder()
+                    .buildRound(player.getName().substring(0, 1), generator.getRandomColor());
 
-        TextView thirdPlace = findViewById(R.id.textThridNumber);
-        thirdPlace.setText(Integer.toString(p1.getThirdPlaceFinishes()));
+            ImageView profileImage = findViewById(R.id.profile_image);
+            profileImage.setImageDrawable(drawable);
+
+        }
 
     }
 

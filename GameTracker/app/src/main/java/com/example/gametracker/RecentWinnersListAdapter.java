@@ -1,6 +1,7 @@
 package com.example.gametracker;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,7 +73,10 @@ public class RecentWinnersListAdapter extends RecyclerView.Adapter<RecentWinners
         public void onClick(View v) {
             int mPosition = getLayoutPosition();
             RecentWinner player = mRecentWinners.get(mPosition);
-            Toast.makeText(mContext, "You clicked " + player.getName(), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(mContext, profile.class);
+            intent.putExtra("id", player.getPlayerId());
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            mContext.startActivity(intent);
         }
     }
 }

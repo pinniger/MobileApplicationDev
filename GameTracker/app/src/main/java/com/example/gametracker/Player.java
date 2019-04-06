@@ -4,16 +4,6 @@ public class Player {
     private int id;
     private String name;
     private String group;
-    private String image;
-    private int rank;
-
-    public int getRank() {
-        return rank;
-    }
-
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
 
     public Player(String name, String group) {
         this.name = name;
@@ -36,10 +26,6 @@ public class Player {
 
     public void setGroup(String group) {
         this.group = group;
-    }
-
-    public String getImage() {
-        return image;
     }
 
     public void setId(int value) {

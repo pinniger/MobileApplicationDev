@@ -5,9 +5,9 @@
     android:orientation="horizontal"
     android:padding="6dp" >
 
-    <ImageView android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:id="@+id/image_top_players"/>
+    <ImageView
+        android:id="@+id/image_top_players"
+        style="@style/image_view_letters" />
 
     <TextView
         android:id="@+id/text_top_players_name"

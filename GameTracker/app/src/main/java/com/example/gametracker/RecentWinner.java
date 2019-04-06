@@ -8,6 +8,8 @@ public class RecentWinner {
     private Date date;
     private String mDateFormat = "MM/dd/yy";
 
+    private int playerId;
+
     public String getDateString() {
         SimpleDateFormat sdf = new SimpleDateFormat(mDateFormat);
         return sdf.format(date);
@@ -32,5 +34,13 @@ public class RecentWinner {
 
     public void setDate(java.util.Date date) {
         this.date = date;
+    }
+
+    public int getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(int playerId) {
+        this.playerId = playerId;
     }
 }

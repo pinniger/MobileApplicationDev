@@ -1,6 +1,8 @@
 package com.example.gametracker;
 
-public class PlayerDetail extends Player{
+import java.util.Comparator;
+
+public class PlayerDetail extends Player implements Comparable<PlayerDetail> {
     private int firstPlaceFinishes;
     private int secondPlaceFinishes;
     private int thirdPlaceFinishes;
@@ -34,4 +36,8 @@ public class PlayerDetail extends Player{
         this.thirdPlaceFinishes = thirdPlaceFinishes;
     }
 
+    @Override
+    public int compareTo(PlayerDetail o) {
+        return o.getTotalScore() - this.getTotalScore();
+    }
 }

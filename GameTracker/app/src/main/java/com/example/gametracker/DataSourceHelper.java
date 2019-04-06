@@ -7,19 +7,20 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
+/**
+ * Class used to interact with the database
+ */
 public class DataSourceHelper {
 
     private SQLiteDatabase database;
     private GameTrackerDBHelper dbHe1per;
 
-    public boolean insertGame (Game game){
+    public boolean insertGame(Game game) {
         Log.d(TAG, "insertGame: Inserting " + game.getDate());
         boolean succeeded = false;
         try {
@@ -52,7 +53,7 @@ public class DataSourceHelper {
     public boolean deletePlayer(Player player) {
         try {
 
-            return database.delete(dbHe1per.PLAYER_TABLE_NAME, dbHe1per.PLAYER_COL_ID + "= ?", new String[] {Integer.toString(player.getId())}) > 0;
+            return database.delete(dbHe1per.PLAYER_TABLE_NAME, dbHe1per.PLAYER_COL_ID + "= ?", new String[]{Integer.toString(player.getId())}) > 0;
 
         } catch (Exception e) {
             Log.d(TAG, "deletePlayer: " + e.getMessage());
@@ -61,7 +62,7 @@ public class DataSourceHelper {
     }
 
 
-    public Cursor getAllCursor(){
+    public Cursor getAllCursor() {
         try {
             String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME + ";";
             return database.rawQuery(query, null);
@@ -72,12 +73,12 @@ public class DataSourceHelper {
         }
     }
 
-    public List<Player> getAll(){
+    public List<Player> getAll() {
         List<Player> players = new ArrayList<>();
         try {
             String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME + ";";
             Cursor cursor = database.rawQuery(query, null);
-            while(cursor.moveToNext()){
+            while (cursor.moveToNext()) {
                 Log.d(TAG, "getAll: adding player " + cursor.getInt(0));
                 Player p = new Player();
                 p.setId(cursor.getInt(0));
@@ -101,7 +102,7 @@ public class DataSourceHelper {
             Player player = new Player();
             String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME + " where _id = " + id;
             Cursor cursor = database.rawQuery(query, null);
-            if (cursor.moveToFirst()){
+            if (cursor.moveToFirst()) {
                 player.setId(cursor.getInt(0));
                 player.setName(cursor.getString(1));
                 player.setGroup(cursor.getString(2));
@@ -117,39 +118,40 @@ public class DataSourceHelper {
     }
 
     public PlayerDetail getPlayerDetail(int id) {
+
         try {
             PlayerDetail player = new PlayerDetail();
-            String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME + " where _id = " + id;
-            Cursor cursor = database.rawQuery(query, null);
-            if (cursor.moveToFirst()){
-                player.setId(cursor.getInt(0));
-                player.setName(cursor.getString(1));
-                player.setGroup(cursor.getString(2));
-                cursor.close();
+            String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME + " where " + dbHe1per.PLAYER_COL_ID + " = " + id;
+            Cursor playerCursor = database.rawQuery(query, null);
+            if (playerCursor.moveToFirst()) {
+                player.setId(playerCursor.getInt(0));
+                player.setName(playerCursor.getString(1));
+                player.setGroup(playerCursor.getString(2));
+                playerCursor.close();
             }
 
             // get first place finishes
             query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_FIRST_PLACE + " = " + id;
-            cursor = database.rawQuery(query, null);
-            if (cursor.moveToFirst()){
-                player.setFirstPlaceFinishes(cursor.getInt(0));
-                cursor.close();
+            Cursor firstPlaceCursor = database.rawQuery(query, null);
+            if (firstPlaceCursor.moveToFirst()) {
+                player.setFirstPlaceFinishes(firstPlaceCursor.getInt(0));
+                firstPlaceCursor.close();
             }
 
             // get second place finishes
             query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_SECOND_PLACE + " = " + id;
-            cursor = database.rawQuery(query, null);
-            if (cursor.moveToFirst()){
-                player.setSecondPlaceFinishes(cursor.getInt(0));
-                cursor.close();
+            Cursor secondPlaceCursor = database.rawQuery(query, null);
+            if (secondPlaceCursor.moveToFirst()) {
+                player.setSecondPlaceFinishes(secondPlaceCursor.getInt(0));
+                secondPlaceCursor.close();
             }
 
             // get third place finishes
             query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_THRID_PLACE + " = " + id;
-            cursor = database.rawQuery(query, null);
-            if (cursor.moveToFirst()){
-                player.setThirdPlaceFinishes(cursor.getInt(0));
-                cursor.close();
+            Cursor thirdPlaceCursor = database.rawQuery(query, null);
+            if (thirdPlaceCursor.moveToFirst()) {
+                player.setThirdPlaceFinishes(thirdPlaceCursor.getInt(0));
+                thirdPlaceCursor.close();
             }
 
 
@@ -221,6 +223,12 @@ public class DataSourceHelper {
         }
     }
 
+
+    /**
+     * This method is here to seed the players table during development
+     * I'm leaving it here for future use, but it is not called anywhere
+     * in the program
+     */
     public void seedPlayers() {
         Log.d(TAG, "seedPlayers: Seeding players...");
         try {
@@ -229,17 +237,17 @@ public class DataSourceHelper {
             for (Player p : players) {
                 insertPlayer(p);
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             Log.d(TAG, "seedPlayers: " + e.getMessage());
         }
     }
+
 
     private ContentValues setPlayerValues(Player player) {
         ContentValues values = new ContentValues();
 
         values.put(dbHe1per.PLAYER_COL_NAME, player.getName());
         values.put(dbHe1per.PLAYER_COL_GROUP, player.getGroup());
-        values.put(dbHe1per.PLAYER_COL_IMAGE, player.getImage());
 
         return values;
     }
@@ -266,7 +274,7 @@ public class DataSourceHelper {
     public boolean deleteGame(Game game) {
         try {
 
-            return database.delete(dbHe1per.GAMES_TABLE_NAME, dbHe1per.GAMES_COL_ID + "= ?", new String[] {Integer.toString(game.getId())}) > 0;
+            return database.delete(dbHe1per.GAMES_TABLE_NAME, dbHe1per.GAMES_COL_ID + "= ?", new String[]{Integer.toString(game.getId())}) > 0;
 
         } catch (Exception e) {
             Log.d(TAG, "deleteGame: " + e.getMessage());
@@ -280,7 +288,7 @@ public class DataSourceHelper {
         try {
             String query = "select * from " + dbHe1per.GAMES_TABLE_NAME + " order by " + dbHe1per.GAMES_COL_DATEPLAYED + " desc;";
             Cursor cursor = database.rawQuery(query, null);
-            while(cursor.moveToNext()){
+            while (cursor.moveToNext()) {
                 Game game = new Game();
                 game.setId(cursor.getInt(0));
                 game.setDateString(cursor.getString(1));
@@ -300,13 +308,13 @@ public class DataSourceHelper {
         return games;
     }
 
-    public List<RecentWinner> getRecentWinners(int num){
+    public List<RecentWinner> getRecentWinners(int num) {
 
         List<RecentWinner> winners = new ArrayList<>();
         String query = "select * from " + dbHe1per.GAMES_TABLE_NAME + " order by " + dbHe1per.GAMES_COL_DATEPLAYED + " desc LIMIT " + num + ";";
         Cursor cursor = database.rawQuery(query, null);
 
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
 
             // reuse formatter for dates
             Game game = new Game();
@@ -316,6 +324,7 @@ public class DataSourceHelper {
             Player player = this.getPlayer(cursor.getInt(2));
 
             RecentWinner rw = new RecentWinner(player.getName(), game.getDate());
+            rw.setPlayerId(player.getId());
             winners.add(rw);
         }
 

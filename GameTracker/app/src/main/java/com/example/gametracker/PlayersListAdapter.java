@@ -118,7 +118,10 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
 
             int mPosition = getLayoutPosition();
             Player player = mPlayerList.get(mPosition);
-            Toast.makeText(mContext,"You clicked " + player.getName(), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(mContext, profile.class);
+            intent.putExtra("id", player.getId());
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            mContext.startActivity(intent);
 
         }
     }
