@@ -26,8 +26,9 @@ public class players extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        // repopulate the players object every time this activity gets started
+        // so it is always up to date with the correct list (after insert or update)
         populatePlayers();
-        Log.d(TAG, "onStart: Has been called");
     }
 
     @Override
@@ -35,10 +36,26 @@ public class players extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_players);
 
+        // Set the tool bar text
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("All Players");
         setSupportActionBar(toolbar);
 
+        // init the floating action button
+        initFab();
+
+        // Init the recycler view and list adapter
+        mPlayers = new ArrayList<>();
+        mRecyclerView = findViewById(R.id.players_recycler_view);
+        mAdapter = new PlayersListAdapter(this, mPlayers, R.layout.playerlist_item);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // populate the players member variable
+        populatePlayers();
+    }
+
+    private void initFab() {
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,16 +65,12 @@ public class players extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        mPlayers = new ArrayList<>();
-        mRecyclerView = findViewById(R.id.players_recycler_view);
-        mAdapter = new PlayersListAdapter(this, mPlayers, R.layout.playerlist_item);
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        populatePlayers();
     }
 
+    /**
+     * Populates the list of players and notifies the list adapter that
+     * the list data has changed and log any errors
+     */
     private void populatePlayers() {
         try {
             mPlayers.clear();
@@ -66,7 +79,7 @@ public class players extends AppCompatActivity {
             mPlayers.addAll(pds.getAll());
             pds.close();
         } catch (Exception e) {
-            Log.d(TAG, "onCreate: Didn't work: " + e.getMessage());
+            Log.d(TAG, "populatePlayers: " + e.getMessage());
         }
         mAdapter.notifyDataSetChanged();
     }
@@ -97,7 +110,4 @@ public class players extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
 }
