@@ -74,7 +74,7 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, new_game.class);
-                intent.putExtra("id", Integer.toString(mCurrent.getId()));
+                intent.putExtra("id", mCurrent.getId());
                 mContext.startActivity(intent);
             }
         });

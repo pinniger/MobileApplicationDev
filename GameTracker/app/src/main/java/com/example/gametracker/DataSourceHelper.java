@@ -20,23 +20,15 @@ public class DataSourceHelper {
     private SQLiteDatabase database;
     private GameTrackerDBHelper dbHe1per;
 
-    public boolean insertGame(Game game) {
-        Log.d(TAG, "insertGame: Inserting " + game.getDate());
-        boolean succeeded = false;
-        try {
-            ContentValues initialValues = setGameValues(game);
-            succeeded = database.insert(dbHe1per.GAMES_TABLE_NAME, null, initialValues) > 0;
-        } catch (Exception e) {
-            // do nothing
-        }
-
-        return succeeded;
-    }
-
     public DataSourceHelper(Context context) {
         dbHe1per = new GameTrackerDBHelper(context);
     }
 
+    /**
+     * Inserts a new player into the database
+     * @param player
+     * @return
+     */
     public boolean insertPlayer(Player player) {
         Log.d(TAG, "insertPlayer: Inserting " + player.getName());
         boolean succeeded = false;
@@ -50,6 +42,11 @@ public class DataSourceHelper {
         return succeeded;
     }
 
+    /**
+     * Deletes player from the database
+     * @param player
+     * @return True if successful, false if unsuccessful
+     */
     public boolean deletePlayer(Player player) {
         try {
 
@@ -61,7 +58,10 @@ public class DataSourceHelper {
         }
     }
 
-
+    /**
+     * Gets all the players
+     * @return Cursor object of all the players
+     */
     public Cursor getAllCursor() {
         try {
             String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME + ";";
@@ -73,13 +73,17 @@ public class DataSourceHelper {
         }
     }
 
-    public List<Player> getAll() {
+    /**
+     * Gets all players
+     * @return List of players
+     */
+    public List<Player> getAllPlayers() {
         List<Player> players = new ArrayList<>();
         try {
             String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME + ";";
             Cursor cursor = database.rawQuery(query, null);
             while (cursor.moveToNext()) {
-                Log.d(TAG, "getAll: adding player " + cursor.getInt(0));
+                Log.d(TAG, "getAllPlayers: adding player " + cursor.getInt(0));
                 Player p = new Player();
                 p.setId(cursor.getInt(0));
                 p.setName(cursor.getString(1));
@@ -91,12 +95,17 @@ public class DataSourceHelper {
             cursor.close();
 
         } catch (Exception e) {
-            Log.d(TAG, "getAll: Failed getting players");
+            Log.d(TAG, "getAllPlayers: Failed getting players");
         }
 
         return players;
     }
 
+    /**
+     * Gets a single player by Id
+     * @param id
+     * @return A player object
+     */
     public Player getPlayer(int id) {
         try {
             Player player = new Player();
@@ -117,6 +126,11 @@ public class DataSourceHelper {
         }
     }
 
+    /**
+     * Gets a single player detail object
+     * @param id
+     * @return Player Detail object
+     */
     public PlayerDetail getPlayerDetail(int id) {
 
         try {
@@ -162,6 +176,10 @@ public class DataSourceHelper {
         }
     }
 
+    /**
+     * Gets a list of Player Detail objects
+     * @return List of player Detail objects
+     */
     public List<PlayerDetail> getAllPlayerDetail() {
 
         List<PlayerDetail> topPlayers = new ArrayList<>();
@@ -213,12 +231,18 @@ public class DataSourceHelper {
         }
     }
 
+    /**
+     * Updates a player in the database
+     * @param player
+     * @return Successful or not
+     */
     public boolean updatePlayer(Player player) {
         Log.d(TAG, "updatePlayer: Updating " + player.getName());
         try {
             ContentValues initialValues = setPlayerValues(player);
             return database.update(dbHe1per.PLAYER_TABLE_NAME, initialValues, dbHe1per.PLAYER_COL_ID + " = " + player.getId(), null) > 0;
         } catch (Exception e) {
+            Log.d(TAG, "updatePlayer: " + e.getMessage());
             return false;
         }
     }
@@ -243,6 +267,11 @@ public class DataSourceHelper {
     }
 
 
+    /**
+     * Helper method for creating a content value object for a player
+     * @param player
+     * @return Player content value object
+     */
     private ContentValues setPlayerValues(Player player) {
         ContentValues values = new ContentValues();
 
@@ -252,6 +281,11 @@ public class DataSourceHelper {
         return values;
     }
 
+    /**
+     * Helper method for creating a content value object for a game
+     * @param game
+     * @return Game content value object
+     */
     private ContentValues setGameValues(Game game) {
         ContentValues values = new ContentValues();
 
@@ -263,14 +297,26 @@ public class DataSourceHelper {
         return values;
     }
 
+    /**
+     * Opens a database connection
+     * @throws SQLException
+     */
     public void open() throws SQLException {
         database = dbHe1per.getWritableDatabase();
     }
 
+    /**
+     * Closes the database connection
+     */
     public void close() {
         dbHe1per.close();
     }
 
+    /**
+     * Deletes a game
+     * @param game
+     * @return Successful or not
+     */
     public boolean deleteGame(Game game) {
         try {
 
@@ -282,6 +328,10 @@ public class DataSourceHelper {
         }
     }
 
+    /**
+     * Gets a list of all games
+     * @return List of all games
+     */
     public List<Game> getAllGames() {
         List<Game> games = new ArrayList<>();
         //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
@@ -308,6 +358,11 @@ public class DataSourceHelper {
         return games;
     }
 
+    /**
+     * Gets a list of recent winners
+     * @param num
+     * @return List of recent winners
+     */
     public List<RecentWinner> getRecentWinners(int num) {
 
         List<RecentWinner> winners = new ArrayList<>();
@@ -331,4 +386,60 @@ public class DataSourceHelper {
         return winners;
     }
 
+    /**
+     * Gets a single game
+     * @param id
+     * @return Game object
+     */
+    public Game getGame(int id) {
+        try {
+            Game game = new Game();
+            String query = "select * from " + dbHe1per.GAMES_TABLE_NAME + " where _id = " + id;
+            Cursor cursor = database.rawQuery(query, null);
+            if (cursor.moveToFirst()) {
+                game.setId(cursor.getInt(0));
+                game.setDateString(cursor.getString(1));
+                game.setFirstPlace(cursor.getInt(2));
+                game.setSecondPlace(cursor.getInt(3));
+                game.setThirdPlace(cursor.getInt(4));
+
+                cursor.close();
+            }
+
+            return game;
+        } catch (Exception e) {
+            Log.d(TAG, "getGame: " + e.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * Updates a game in the database
+     * @param game
+     * @return
+     */
+    public boolean updateGame(Game game) {
+        try {
+            ContentValues initialValues = setGameValues(game);
+            return database.update(dbHe1per.GAMES_TABLE_NAME, initialValues, dbHe1per.GAMES_COL_ID + " = " + game.getId(), null) > 0;
+        } catch (Exception e) {
+            Log.d(TAG, "updateGame: " + e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Inserts a game into the database
+     * @param game
+     * @return
+     */
+    public boolean insertGame(Game game) {
+        try {
+            ContentValues initialValues = setGameValues(game);
+            return database.insert(dbHe1per.GAMES_TABLE_NAME, null, initialValues) > 0;
+        } catch (Exception e) {
+            Log.d(TAG, "insertGame: " + e.getMessage());
+            return false;
+        }
+    }
 }

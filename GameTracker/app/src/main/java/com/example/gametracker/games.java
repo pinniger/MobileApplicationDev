@@ -54,7 +54,6 @@ public class games extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         populateGames();
-        //initGames();
     }
 
     private void populateGames() {
@@ -66,7 +65,7 @@ public class games extends AppCompatActivity {
 
             dsh.close();
         } catch (Exception e) {
-            Log.d(TAG, "populateGames: Didn't work: " + e.getMessage());
+            Log.d(TAG, "populateGames: " + e.getMessage());
         }
         mAdapter.notifyDataSetChanged();
     }
@@ -82,16 +81,4 @@ public class games extends AppCompatActivity {
             }
         });
     }
-
-    private void initGames() {
-        Date currentTime = Calendar.getInstance().getTime();
-        Game g1 = new Game();
-        //g1.setDate(currentTime);
-
-        TextView tv = findViewById(R.id.gameTextView);
-        String df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.ENGLISH).format(g1.getDate());
-        tv.setText(df);
-    }
-
-
 }

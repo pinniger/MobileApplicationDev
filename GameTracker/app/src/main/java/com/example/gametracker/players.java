@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +75,7 @@ public class players extends AppCompatActivity {
             mPlayers.clear();
             DataSourceHelper pds = new DataSourceHelper(this);
             pds.open();
-            mPlayers.addAll(pds.getAll());
+            mPlayers.addAll(pds.getAllPlayers());
             pds.close();
         } catch (Exception e) {
             Log.d(TAG, "populatePlayers: " + e.getMessage());

@@ -2,17 +2,21 @@ package com.example.gametracker;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
+
 import static java.lang.Math.toIntExact;
 
 import java.text.SimpleDateFormat;
@@ -23,45 +27,93 @@ public class new_game extends AppCompatActivity {
     private static final String TAG = "new_game";
     final Calendar myCalendar = Calendar.getInstance();
     private Context mContext;
+    private Game mCurrentGame;
+    private Toolbar mToolbar;
+    private Spinner mFirstPlace;
+    private Spinner mSecondPlace;
+    private Spinner mThridPlace;
+    private EditText mDateField;
+    private boolean mIsNewGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game);
         mContext = this;
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("New Game");
-        setSupportActionBar(toolbar);
+        mToolbar = findViewById(R.id.toolbar);
+        mFirstPlace = findViewById(R.id.spinnerFirstPlace);
+        mSecondPlace = findViewById(R.id.spinnerSecondPlace);
+        mThridPlace = findViewById(R.id.spinnerThirdPlace);
+        mDateField = findViewById(R.id.editDate);
+
+        initSpinners();
+
+        int id = getIntent().getIntExtra("id", -1);
+        mIsNewGame = id < 0;
+
+        if (mIsNewGame) {
+            mToolbar.setTitle("New Game");
+            mCurrentGame = new Game();
+            mCurrentGame.setId(id);
+        } else {
+            // edit game
+            initEditGame(id);
+        }
+
+        setSupportActionBar(mToolbar);
         initDatePicker();
 
+        initSaveButton();
+        initCancelButton();
+    }
+
+    private void initEditGame(int id) {
         try {
-            DataSourceHelper pds = new DataSourceHelper(this);
-            pds.open();
-            Cursor players = pds.getAllCursor();
-            String[] from = { "name" };
-            int[] to = { android.R.id.text1 };
+            DataSourceHelper dsh = new DataSourceHelper(this);
+            dsh.open();
+            mCurrentGame = dsh.getGame(id);
+            dsh.close();
+
+            mDateField.setText(mCurrentGame.getDateString());
+            setSpinnerValue(mFirstPlace, mCurrentGame.getFirstPlace());
+            setSpinnerValue(mSecondPlace, mCurrentGame.getSecondPlace());
+            setSpinnerValue(mThridPlace, mCurrentGame.getThirdPlace());
+
+        } catch (Exception e) {
+            Log.d(TAG, "initEditGame: " + e.getMessage());
+        }
+    }
+
+    private void setSpinnerValue(Spinner spinner, int rowId) {
+        for (int i = 0; i < spinner.getCount(); i++) {
+            Cursor value = (Cursor) spinner.getItemAtPosition(i);
+            long id = value.getLong(value.getColumnIndex("_id"));
+            if (id == rowId) {
+                spinner.setSelection(i);
+            }
+        }
+    }
+
+    private void initSpinners() {
+        try {
+            DataSourceHelper dsh = new DataSourceHelper(this);
+            dsh.open();
+            Cursor players = dsh.getAllCursor();
+            String[] from = {"name"};
+            int[] to = {android.R.id.text1};
 
             SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
                     android.R.layout.simple_spinner_dropdown_item,
                     players, from, to, 0);
 
-            Spinner firstPlace = findViewById(R.id.spinnerFirstPlace);
-            firstPlace.setAdapter(adapter);
+            mFirstPlace.setAdapter(adapter);
+            mSecondPlace.setAdapter(adapter);
+            mThridPlace.setAdapter(adapter);
+            dsh.close();
 
-            Spinner secondPlace = findViewById(R.id.spinnerSecondPlace);
-            secondPlace.setAdapter(adapter);
-
-            Spinner thirdPlace = findViewById(R.id.spinnerThirdPlace);
-            thirdPlace.setAdapter(adapter);
-
-            pds.close();
-
-        } catch (Exception e){
-            Log.d(TAG, "onCreate: " + e.getMessage());
+        } catch (Exception e) {
+            Log.d(TAG, "initSpinners: " + e.getMessage());
         }
-
-        initSaveButton();
-        initCancelButton();
     }
 
     private void initCancelButton() {
@@ -81,33 +133,33 @@ public class new_game extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Spinner firstPlace = findViewById(R.id.spinnerFirstPlace);
-                Spinner secondPlace = findViewById(R.id.spinnerSecondPlace);
-                Spinner thirdPlace = findViewById(R.id.spinnerThirdPlace);
-                final EditText dateField = findViewById(R.id.editDate);
 
-                int firstPlaceId = toIntExact(firstPlace.getSelectedItemId());
-                int secondPlaceId = toIntExact(secondPlace.getSelectedItemId());
-                int thirdPlaceId = toIntExact(thirdPlace.getSelectedItemId());
+                mDateField = findViewById(R.id.editDate);
 
-                Game game = new Game();
-                game.setDateString(dateField.getText().toString());
-                game.setFirstPlace(firstPlaceId);
-                game.setSecondPlace(secondPlaceId);
-                game.setThirdPlace(thirdPlaceId);
+                int firstPlaceId = toIntExact(mFirstPlace.getSelectedItemId());
+                int secondPlaceId = toIntExact(mSecondPlace.getSelectedItemId());
+                int thirdPlaceId = toIntExact(mThridPlace.getSelectedItemId());
+
+                mCurrentGame.setDateString(mDateField.getText().toString());
+                mCurrentGame.setFirstPlace(firstPlaceId);
+                mCurrentGame.setSecondPlace(secondPlaceId);
+                mCurrentGame.setThirdPlace(thirdPlaceId);
 
                 try {
                     DataSourceHelper dsh = new DataSourceHelper(mContext);
                     dsh.open();
-                    dsh.insertGame(game);
+                    if (mIsNewGame) {
+                        dsh.insertGame(mCurrentGame);
+                    } else {
+                        dsh.updateGame(mCurrentGame);
+                    }
+
                     dsh.close();
                     finish();
 
-                } catch (Exception e){
+                } catch (Exception e) {
                     Log.d(TAG, "onClick: " + e.getMessage());
                 }
-
-
             }
         });
     }
@@ -138,6 +190,5 @@ public class new_game extends AppCompatActivity {
             }
         });
     }
-
 
 }
