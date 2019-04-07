@@ -10,4 +10,10 @@
     <string name="title_activity_new_game">new_game</string>
     <string name="text_recent_winners">Recent Winners</string>
     <string name="text_top_players">Top Players</string>
+    <string name="profile_points">Points</string>
+    <string name="profile_rank">Rank</string>
+    <string name="text_profile_second_place">2nd Place</string>
+    <string name="text_third_place">3rd Place</string>
+    <string name="edit_text">Edit</string>
+    <string name="new_player_text">New Player</string>
 </resources>

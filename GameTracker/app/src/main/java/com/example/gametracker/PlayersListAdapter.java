@@ -85,7 +85,7 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, new_player.class);
-                intent.putExtra("id", Integer.toString(mCurrent.getId()));
+                intent.putExtra("id", mCurrent.getId());
                 mContext.startActivity(intent);
             }
         });

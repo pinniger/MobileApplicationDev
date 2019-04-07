@@ -24,7 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Clair Inniger"
             android:textColor="@color/textColorDarkBackground"
             android:textSize="24dp" />
 
@@ -41,7 +40,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:text="Developer"
             android:textColor="@color/textColorDarkBackground"
             android:textSize="24dp" />
     </LinearLayout>
@@ -69,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="36dp"
-                android:text="Points" />
+                android:text="@string/profile_points" />
 
             <TextView
                 android:id="@+id/textPointsNumber"
@@ -77,8 +75,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="32dp"
-                android:textColor="@color/colorAccent"
-                android:text="64" />
+                android:textColor="@color/colorAccent" />
         </LinearLayout>
 
         <LinearLayout
@@ -93,15 +90,14 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="36dp"
-                android:text="Rank" />
+                android:text="@string/profile_rank" />
             <TextView
                 android:id="@+id/textRankNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="32dp"
-                android:textColor="@color/colorAccent"
-                android:text="2nd" />
+                android:textColor="@color/colorAccent" />
         </LinearLayout>
     </LinearLayout>
 
@@ -123,7 +119,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textFirst"
+                android:id="@+id/text_profile_first"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -131,11 +127,10 @@
                 android:textSize="18dp" />
 
             <TextView
-                android:id="@+id/textFirstNumber"
+                android:id="@+id/text_profile_first_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="8"
                 android:textColor="@color/colorAccent"
                 android:textSize="24dp" />
         </LinearLayout>
@@ -147,19 +142,18 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textSecond"
+                android:id="@+id/text_profile_second"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="2nd Place"
+                android:text="@string/text_profile_second_place"
                 android:textSize="18dp" />
 
             <TextView
-                android:id="@+id/textSecondNumber"
+                android:id="@+id/text_profile_second_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="15"
                 android:textColor="@color/colorAccent"
                 android:textSize="24dp" />
         </LinearLayout>
@@ -171,21 +165,20 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textThird"
+                android:id="@+id/text_profile_third"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="18dp"
-                android:text="3rd Place" />
+                android:text="@string/text_third_place" />
             
             <TextView
-                android:id="@+id/textThridNumber"
+                android:id="@+id/text_profile_third_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="24dp"
-                android:textColor="@color/colorAccent"
-                android:text="5" />
+                android:textColor="@color/colorAccent" />
         </LinearLayout>
     </LinearLayout>
 

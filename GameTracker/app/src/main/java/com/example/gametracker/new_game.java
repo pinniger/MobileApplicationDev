@@ -61,6 +61,18 @@ public class new_game extends AppCompatActivity {
         }
 
         initSaveButton();
+        initCancelButton();
+    }
+
+    private void initCancelButton() {
+        Button cancelButton = findViewById(R.id.buttonCancel);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initSaveButton() {

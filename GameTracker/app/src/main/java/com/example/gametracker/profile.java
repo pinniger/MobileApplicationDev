@@ -2,19 +2,14 @@ package com.example.gametracker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -75,13 +70,13 @@ public class profile extends AppCompatActivity {
             TextView rankTextView = findViewById(R.id.textRankNumber);
             rankTextView.setText(Integer.toString(rank));
 
-            TextView firstPlace = findViewById(R.id.textFirstNumber);
+            TextView firstPlace = findViewById(R.id.text_profile_first_number);
             firstPlace.setText(Integer.toString(player.getFirstPlaceFinishes()));
 
-            TextView secondPlace = findViewById(R.id.textSecondNumber);
+            TextView secondPlace = findViewById(R.id.text_profile_second_number);
             secondPlace.setText(Integer.toString(player.getSecondPlaceFinishes()));
 
-            TextView thirdPlace = findViewById(R.id.textThridNumber);
+            TextView thirdPlace = findViewById(R.id.text_profile_third_number);
             thirdPlace.setText(Integer.toString(player.getThirdPlaceFinishes()));
 
             ColorGenerator generator = ColorGenerator.MATERIAL;
