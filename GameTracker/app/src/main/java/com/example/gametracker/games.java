@@ -10,6 +10,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -56,13 +58,22 @@ public class games extends AppCompatActivity {
         populateGames();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        // hide the games menu item
+        menu.getItem(1).setVisible(false);
+        return true;
+    }
+
+
     private void populateGames() {
         try {
             mGames.clear();
             DataSourceHelper dsh = new DataSourceHelper(this);
             dsh.open();
             mGames.addAll(dsh.getAllGames());
-
             dsh.close();
         } catch (Exception e) {
             Log.d(TAG, "populateGames: " + e.getMessage());
@@ -80,5 +91,19 @@ public class games extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_players) {
+            Intent intent = new Intent(games.this, players.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -79,15 +79,8 @@ public class profile extends AppCompatActivity {
             TextView thirdPlace = findViewById(R.id.text_profile_third_number);
             thirdPlace.setText(Integer.toString(player.getThirdPlaceFinishes()));
 
-            ColorGenerator generator = ColorGenerator.MATERIAL;
-            TextDrawable drawable = TextDrawable.builder()
-                    .buildRound(player.getName().substring(0, 1), generator.getRandomColor());
-
             ImageView profileImage = findViewById(R.id.profile_image);
-            profileImage.setImageDrawable(drawable);
-
+            profileImage.setImageDrawable(Helper.getDrawableName(player.getName()));
         }
-
     }
-
 }

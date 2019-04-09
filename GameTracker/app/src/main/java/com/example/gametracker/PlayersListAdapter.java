@@ -27,6 +27,7 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
     private Context mContext;
 
     public PlayersListAdapter(Context context, List<Player> list, int v) {
+        // init member vars
         this.mInflater = LayoutInflater.from(context);
         this.mView = v;
         this.mPlayerList = list;
@@ -41,16 +42,14 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
 
     @Override
     public void onBindViewHolder(final PlayerViewHolder holder, final int position) {
+
+        // bind the view
         final Player mCurrent = mPlayerList.get(holder.getAdapterPosition());
         holder.nameTextView.setText(mCurrent.getName());
         editButtonClickListener(holder, mCurrent);
         deleteButtonClickListener(holder);
 
-        ColorGenerator generator = ColorGenerator.MATERIAL;
-        TextDrawable drawable = TextDrawable.builder()
-                .buildRound(mCurrent.getName().substring(0,1), generator.getRandomColor());
-
-        holder.imageView.setImageDrawable(drawable);
+        holder.imageView.setImageDrawable(Helper.getDrawableName(mCurrent.getName()));
     }
 
     private void deleteButtonClickListener(final PlayerViewHolder holder) {
@@ -65,7 +64,7 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
                     isDeleted = pds.deletePlayer(deletedPlayer);
                     pds.close();
                 } catch (Exception e) {
-                    Log.d(TAG, "onClick: Unable to delete player");
+                    Log.d(TAG, "deleteButtonClickListener: Unable to delete player " + e.getMessage());
                     Toast.makeText(mContext, "Unable to delete " + deletedPlayer.getName(), Toast.LENGTH_SHORT).show();
                 }
 
@@ -115,14 +114,12 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
 
         @Override
         public void onClick(View v) {
-
             int mPosition = getLayoutPosition();
             Player player = mPlayerList.get(mPosition);
             Intent intent = new Intent(mContext, profile.class);
             intent.putExtra("id", player.getId());
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             mContext.startActivity(intent);
-
         }
     }
 }

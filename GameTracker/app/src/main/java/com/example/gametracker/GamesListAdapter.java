@@ -22,7 +22,8 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
     private Context mContext;
 
     public GamesListAdapter(Context context, List<Game> list, int v) {
-        mInflater = LayoutInflater.from(context);
+        // init member vars
+        this.mInflater = LayoutInflater.from(context);
         this.mView = v;
         this.mGamesList = list;
         this.mContext = context;
@@ -30,12 +31,15 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
 
     @Override
     public GamesListAdapter.GameViewHolder onCreateViewHolder(ViewGroup parent, int i) {
+        // inflate view
         View mItemView = mInflater.inflate(mView, parent, false);
         return new GameViewHolder(mItemView, this);
     }
 
     @Override
     public void onBindViewHolder(final GamesListAdapter.GameViewHolder holder, final int position) {
+
+        // bind view
         final Game mCurrent = mGamesList.get(holder.getAdapterPosition());
         holder.gameTextView.setText(mCurrent.getDateString());
         editButtonClickListener(holder, mCurrent);
@@ -51,18 +55,17 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
                 try {
                     DataSourceHelper pds = new DataSourceHelper(mContext);
                     pds.open();
-                    isDeleted = pds.deleteGame(deletedGame);
+                    // if the game was deleted, remove the game from the list and notify the user
+                    if (pds.deleteGame(deletedGame)){
+                        mGamesList.remove(holder.getAdapterPosition());
+                        notifyItemRemoved(holder.getAdapterPosition());
+                        Toast.makeText(mContext, deletedGame.getDate() + " deleted!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(mContext, "Unable to delete " + deletedGame.getDate(), Toast.LENGTH_SHORT).show();
+                    }
                     pds.close();
                 } catch (Exception e) {
-                    Log.d(TAG, "onClick: Unable to delete player");
-                    Toast.makeText(mContext, "Unable to delete " + deletedGame.getDate(), Toast.LENGTH_SHORT).show();
-                }
-
-                if(isDeleted) {
-                    mGamesList.remove(holder.getAdapterPosition());
-                    notifyItemRemoved(holder.getAdapterPosition());
-                    Toast.makeText(mContext, deletedGame.getDate() + " deleted!", Toast.LENGTH_SHORT).show();
-                } else {
+                    Log.d(TAG, "deleteButtonClickListener: " + e.getMessage());
                     Toast.makeText(mContext, "Unable to delete " + deletedGame.getDate(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -70,6 +73,7 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
     }
 
     private void editButtonClickListener(GamesListAdapter.GameViewHolder holder, final Game mCurrent) {
+        // open the new game activity in edit mode
         holder.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,15 +100,13 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.Game
             gameTextView = itemView.findViewById(R.id.gameTextView);
             editButton = itemView.findViewById(R.id.gameEditButton);
             deleteButton = itemView.findViewById(R.id.gameDeleteButton);
-            this.mAdapter = adapter;
+            mAdapter = adapter;
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            int mPosition = getLayoutPosition();
-            Game game = mGamesList.get(mPosition);
-            Toast.makeText(mContext,"You clicked " + game.getDate(), Toast.LENGTH_LONG).show();
+            // nothing to do
         }
     }
 

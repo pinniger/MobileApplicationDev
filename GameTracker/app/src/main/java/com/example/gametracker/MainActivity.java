@@ -11,13 +11,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // init floating action button
         initFab();
-
 
         // top players list
         mTopPlayers = new ArrayList<>();
@@ -79,13 +77,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void populateTopPlayers() {
-        //List<PlayerDetail> temp = new ArrayList<>();
         try {
             mTopPlayers.clear();
             DataSourceHelper pds = new DataSourceHelper(this);
             pds.open();
             mTopPlayers.addAll(pds.getAllPlayerDetail().subList(0,3));
             pds.close();
+
+            // let the user know there isn't any data available
+            if(mTopPlayers.size() == 0){
+                TextView noData = findViewById(R.id.textTopPlayersNoData);
+                noData.setVisibility(View.VISIBLE);
+            }
         } catch (Exception e) {
             Log.d(TAG, "populateRecentWinners: Didn't work: " + e.getMessage());
         }
@@ -104,6 +107,12 @@ public class MainActivity extends AppCompatActivity {
             pds.open();
             mRecentWinners.addAll(pds.getRecentWinners(3));
             pds.close();
+
+            // let the user know there isn't any data available
+            if(mTopPlayers.size() == 0){
+                TextView noData = findViewById(R.id.textRecentWinnersNoData);
+                noData.setVisibility(View.VISIBLE);
+            }
         } catch (Exception e) {
             Log.d(TAG, "populateRecentWinners: Didn't work: " + e.getMessage());
         }

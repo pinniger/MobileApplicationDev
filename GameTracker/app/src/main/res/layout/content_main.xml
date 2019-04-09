@@ -8,47 +8,64 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/layoutMain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/layoutMain"
+        <TextView
+            android:id="@+id/textTopPlayers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/text_top_players"
+            android:textSize="20sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_top_winners"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/textTopPlayersNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            android:text="@string/no_data_available"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/text_recentWinners"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/text_recent_winners"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/textTopPlayers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/text_top_players"
-                android:textSize="20sp" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_recent_winners"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary">
+        </android.support.v7.widget.RecyclerView>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_view_top_winners"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-            </android.support.v7.widget.RecyclerView>
-
-            <TextView
-                android:id="@+id/text_recentWinners"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/text_recent_winners"
-                android:textColor="#ffffff"
-                android:textSize="24sp" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_view_recent_winners"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimary">
-            </android.support.v7.widget.RecyclerView>
-        </LinearLayout>
-    </ScrollView>
+        <TextView
+            android:id="@+id/textRecentWinnersNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:text="@string/no_data_available"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

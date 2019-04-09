@@ -87,6 +87,9 @@ public class players extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        // hide the players menu item
+        menu.getItem(0).setVisible(false);
         return true;
     }
 
@@ -94,16 +97,10 @@ public class players extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_players) {
-            Intent intent = new Intent(players.this, players.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            return true;
-        } else if (id == R.id.action_games) {
+        if (id == R.id.action_games) {
             Intent intent = new Intent(players.this, games.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-            //showToast("Players action clicked");
         }
 
         return super.onOptionsItemSelected(item);

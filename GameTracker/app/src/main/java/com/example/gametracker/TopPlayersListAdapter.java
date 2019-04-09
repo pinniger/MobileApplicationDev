@@ -38,14 +38,11 @@ public class TopPlayersListAdapter extends RecyclerView.Adapter<TopPlayersListAd
     public void onBindViewHolder(final TopPlayersListAdapter.TopPlayersViewHolder holder, final int position) {
         final PlayerDetail mCurrent = mTopPlayers.get(holder.getAdapterPosition());
         holder.nameTextView.setText(mCurrent.getName());
+
         int playerScore = mCurrent.getTotalScore();
         holder.scoreTextView.setText(Integer.toString(playerScore));
 
-        ColorGenerator generator = ColorGenerator.MATERIAL;
-        TextDrawable drawable = TextDrawable.builder()
-                .buildRound(mCurrent.getName().substring(0, 1), generator.getRandomColor());
-
-        holder.imageView.setImageDrawable(drawable);
+        holder.imageView.setImageDrawable(Helper.getDrawableName(mCurrent.getName()));
     }
 
     @Override

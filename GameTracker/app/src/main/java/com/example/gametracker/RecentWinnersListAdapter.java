@@ -8,10 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.amulyakhare.textdrawable.TextDrawable;
-import com.amulyakhare.textdrawable.util.ColorGenerator;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -42,11 +38,7 @@ public class RecentWinnersListAdapter extends RecyclerView.Adapter<RecentWinners
         holder.nameTextView.setText(mCurrent.getName());
         holder.dateTextView.setText(new SimpleDateFormat("MMMM dd").format(mCurrent.getDate()));
 
-        ColorGenerator generator = ColorGenerator.MATERIAL;
-        TextDrawable drawable = TextDrawable.builder()
-                .buildRound(mCurrent.getName().substring(0, 1), generator.getRandomColor());
-
-        holder.imageView.setImageDrawable(drawable);
+        holder.imageView.setImageDrawable(Helper.getDrawableName(mCurrent.getName()));
     }
 
     @Override
@@ -65,12 +57,13 @@ public class RecentWinnersListAdapter extends RecyclerView.Adapter<RecentWinners
             dateTextView = itemView.findViewById(R.id.text_recent_winners_date);
             nameTextView = itemView.findViewById(R.id.text_recent_winners_name);
             imageView = itemView.findViewById(R.id.image_recent_winners);
-            this.mAdapter = adapter;
+            mAdapter = adapter;
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
+            // open the profile activity for the clicked player
             int mPosition = getLayoutPosition();
             RecentWinner player = mRecentWinners.get(mPosition);
             Intent intent = new Intent(mContext, profile.class);
