@@ -67,7 +67,6 @@ public class games extends AppCompatActivity {
         return true;
     }
 
-
     private void populateGames() {
         try {
             mGames.clear();
@@ -78,6 +77,13 @@ public class games extends AppCompatActivity {
         } catch (Exception e) {
             Log.d(TAG, "populateGames: " + e.getMessage());
         }
+
+        // let the user know there isn't any data available
+        if(mGames.size() == 0){
+            TextView noData = findViewById(R.id.text_games_nodata);
+            noData.setVisibility(View.VISIBLE);
+        }
+
         mAdapter.notifyDataSetChanged();
     }
 

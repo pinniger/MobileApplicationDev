@@ -17,5 +17,6 @@
     <string name="edit_text">Edit</string>
     <string name="new_player_text">New Player</string>
     <string name="no_data_available">No data available. Add players and games to view this information.</string>
-    <string name="no_players">No players available. Click the + icon to add a game!</string>
+    <string name="no_players">No players available. Click the + icon to add a player!</string>
+    <string name="no_games">No games available. Click the + icon to add a game!</string>
 </resources>
