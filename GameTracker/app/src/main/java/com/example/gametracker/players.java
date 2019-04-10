@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +80,12 @@ public class players extends AppCompatActivity {
             pds.close();
         } catch (Exception e) {
             Log.d(TAG, "populatePlayers: " + e.getMessage());
+        }
+
+        // let the user know there isn't any data available
+        if(mPlayers.size() == 0){
+            TextView noData = findViewById(R.id.text_Players_NoData);
+            noData.setVisibility(View.VISIBLE);
         }
         mAdapter.notifyDataSetChanged();
     }

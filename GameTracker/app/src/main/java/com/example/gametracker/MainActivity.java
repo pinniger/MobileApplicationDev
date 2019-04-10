@@ -83,18 +83,18 @@ public class MainActivity extends AppCompatActivity {
             pds.open();
             mTopPlayers.addAll(pds.getAllPlayerDetail().subList(0,3));
             pds.close();
-
-            // let the user know there isn't any data available
-            if(mTopPlayers.size() == 0){
-                TextView noData = findViewById(R.id.textTopPlayersNoData);
-                noData.setVisibility(View.VISIBLE);
-            }
         } catch (Exception e) {
             Log.d(TAG, "populateRecentWinners: Didn't work: " + e.getMessage());
         }
 
-        // sort by total score descending
-        Collections.sort(mTopPlayers);
+        // let the user know there isn't any data available
+        if(mTopPlayers.size() == 0){
+            TextView noData = findViewById(R.id.textTopPlayersNoData);
+            noData.setVisibility(View.VISIBLE);
+        } else {
+            // sort by total score descending
+            Collections.sort(mTopPlayers);
+        }
 
         mTopPlayersListAdapter.notifyDataSetChanged();
     }
@@ -107,16 +107,15 @@ public class MainActivity extends AppCompatActivity {
             pds.open();
             mRecentWinners.addAll(pds.getRecentWinners(3));
             pds.close();
-
-            // let the user know there isn't any data available
-            if(mTopPlayers.size() == 0){
-                TextView noData = findViewById(R.id.textRecentWinnersNoData);
-                noData.setVisibility(View.VISIBLE);
-            }
         } catch (Exception e) {
             Log.d(TAG, "populateRecentWinners: Didn't work: " + e.getMessage());
         }
 
+        // let the user know there isn't any data available
+        if(mTopPlayers.size() == 0){
+            TextView noData = findViewById(R.id.textRecentWinnersNoData);
+            noData.setVisibility(View.VISIBLE);
+        }
 
         mWinnersListAdapter.notifyDataSetChanged();
     }

@@ -16,4 +16,20 @@
         android:layout_marginLeft="15dp">
     </android.support.v7.widget.RecyclerView>
 
+    <TextView
+        android:id="@+id/text_Players_NoData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_weight="1"
+        android:text="@string/no_players"
+        android:textSize="18sp"
+        android:visibility="gone"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
