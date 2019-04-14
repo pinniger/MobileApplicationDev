@@ -65,6 +65,7 @@ public class new_game extends AppCompatActivity {
 
         initSaveButton();
         initCancelButton();
+        mDateField.requestFocus();
     }
 
     private void initEditGame(int id) {
@@ -166,6 +167,7 @@ public class new_game extends AppCompatActivity {
 
     private void initDatePicker() {
         final EditText dateField = findViewById(R.id.editDate);
+
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -184,9 +186,13 @@ public class new_game extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                new DatePickerDialog(new_game.this, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(
+                        new_game.this,
+                        date,
+                        myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH))
+                        .show();
             }
         });
     }

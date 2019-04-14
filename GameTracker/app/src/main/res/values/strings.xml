@@ -19,4 +19,6 @@
     <string name="no_data_available">No data available. Add players and games to view this information.</string>
     <string name="no_players">No players available. Click the + icon to add a player!</string>
     <string name="no_games">No games available. Click the + icon to add a game!</string>
+    <string name="notification_title">Log your game!</string>
+    <string name="notification_text">Do not forget to log your game!</string>
 </resources>
