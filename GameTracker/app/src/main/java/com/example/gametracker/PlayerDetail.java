@@ -1,7 +1,5 @@
 package com.example.gametracker;
 
-import java.util.Comparator;
-
 public class PlayerDetail extends Player implements Comparable<PlayerDetail> {
     private int firstPlaceFinishes;
     private int secondPlaceFinishes;
