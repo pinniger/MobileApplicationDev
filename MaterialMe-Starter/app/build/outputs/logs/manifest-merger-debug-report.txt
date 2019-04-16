@@ -1,0 +1,99 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:17:1-35:12
+INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:17:1-35:12
+INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:17:1-35:12
+INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:17:1-35:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\43089087b198b594cb5d028eb92f6c7e\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\2ec3f4d26725fd5ec5ffc3301c511999\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\0339002431dcfcb814b03f4deb7602fe\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\378897ffa1bb8fecd05b5f21e8c8759b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\1edf85135bc3e44affc2593b9b7d4618\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\9bb8590549259a77510e56cefe717c5a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\4397cafcb1251cfd6cf32aa9f2d896e7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\03fadd4c21cdedc9f95ba88c2a8dace0\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\5279dfa9be69fa7e5caaf8fe9b33dbf3\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\b32de49514ca1669f50b0d068a13c381\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\c6a38b875545421ff584a022f33b2abd\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\137b358c6719244cf5aea67abd0ba699\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:17:1-35:12
+INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:17:1-35:12
+INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:17:1-35:12
+	package
+		ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:18:5-45
+		INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+		INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+		ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:17:1-35:12
+		INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+		ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:17:1-35:12
+		INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:17:11-69
+application
+ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:20:5-33:19
+	android:supportsRtl
+		ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:24:9-35
+	android:label
+		ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:23:9-41
+	android:icon
+		ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:22:9-43
+	android:allowBackup
+		ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:21:9-35
+	android:theme
+		ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:25:9-40
+activity#com.example.android.materialme.MainActivity
+ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:26:9-32:20
+	android:name
+		ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:26:19-77
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:27:13-31:29
+action#android.intent.action.MAIN
+ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:28:17-69
+	android:name
+		ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:28:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:30:17-77
+	android:name
+		ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml:30:27-74
+uses-sdk
+INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\43089087b198b594cb5d028eb92f6c7e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\43089087b198b594cb5d028eb92f6c7e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\2ec3f4d26725fd5ec5ffc3301c511999\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\2ec3f4d26725fd5ec5ffc3301c511999\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\0339002431dcfcb814b03f4deb7602fe\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\0339002431dcfcb814b03f4deb7602fe\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\378897ffa1bb8fecd05b5f21e8c8759b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\378897ffa1bb8fecd05b5f21e8c8759b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\1edf85135bc3e44affc2593b9b7d4618\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\1edf85135bc3e44affc2593b9b7d4618\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\9bb8590549259a77510e56cefe717c5a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\9bb8590549259a77510e56cefe717c5a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\4397cafcb1251cfd6cf32aa9f2d896e7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\4397cafcb1251cfd6cf32aa9f2d896e7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\03fadd4c21cdedc9f95ba88c2a8dace0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\03fadd4c21cdedc9f95ba88c2a8dace0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\5279dfa9be69fa7e5caaf8fe9b33dbf3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\5279dfa9be69fa7e5caaf8fe9b33dbf3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\b32de49514ca1669f50b0d068a13c381\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\b32de49514ca1669f50b0d068a13c381\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\c6a38b875545421ff584a022f33b2abd\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\c6a38b875545421ff584a022f33b2abd\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\137b358c6719244cf5aea67abd0ba699\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\137b358c6719244cf5aea67abd0ba699\AndroidManifest.xml:20:5-44
+INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+		ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+		INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+		ADDED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml
+		INJECTED from C:\repositories\Github\MobileAppDev\MaterialMe-Starter\app\src\main\AndroidManifest.xml

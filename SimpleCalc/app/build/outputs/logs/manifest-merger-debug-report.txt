@@ -1,0 +1,96 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:17:1-34:12
+INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:17:1-34:12
+INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:17:1-34:12
+INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:17:1-34:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\bffb529df850ea762fd0d30ed8e18ba3\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\eee94275c9a6d80d1b6e4ed0b253e577\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\0fcbbf2aa5f5c7ed500968de3ce5f310\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\8d5e42a46f4e3fd7c6da85855a66d6be\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\252aee9adf2e624dc96e69bc84527915\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\a83a01b8add8ff82f9de88503914487e\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\dd62285c9b7c9af23b11388a19a96ae7\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\c54f080e7f3a9ea0a4179fe7bf1f86de\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\d68a4b84164372663908cb66edd1852a\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\ce1aa6639c8cb0bb4a848c4b654166f3\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\ab5e2b5e21239e34e016aa44f55cd807\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:17:1-34:12
+INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:17:1-34:12
+INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:17:1-34:12
+	package
+		ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:18:5-45
+		INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+		INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+		ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:17:1-34:12
+		INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+		ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:17:1-34:12
+		INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:17:11-69
+application
+ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:20:5-32:19
+	android:supportsRtl
+		ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:24:9-35
+	android:label
+		ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:23:9-41
+	android:icon
+		ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:22:9-43
+	android:allowBackup
+		ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:21:9-35
+	android:theme
+		ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:25:9-40
+activity#com.example.android.SimpleCalc.MainActivity
+ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:26:9-31:20
+	android:name
+		ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:26:19-77
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:27:13-30:29
+action#android.intent.action.MAIN
+ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:28:17-69
+	android:name
+		ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:28:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:29:17-77
+	android:name
+		ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml:29:27-74
+uses-sdk
+INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\bffb529df850ea762fd0d30ed8e18ba3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\bffb529df850ea762fd0d30ed8e18ba3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\eee94275c9a6d80d1b6e4ed0b253e577\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\eee94275c9a6d80d1b6e4ed0b253e577\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\0fcbbf2aa5f5c7ed500968de3ce5f310\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\0fcbbf2aa5f5c7ed500968de3ce5f310\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\8d5e42a46f4e3fd7c6da85855a66d6be\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\8d5e42a46f4e3fd7c6da85855a66d6be\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\252aee9adf2e624dc96e69bc84527915\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\252aee9adf2e624dc96e69bc84527915\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\a83a01b8add8ff82f9de88503914487e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\a83a01b8add8ff82f9de88503914487e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\dd62285c9b7c9af23b11388a19a96ae7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\dd62285c9b7c9af23b11388a19a96ae7\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\c54f080e7f3a9ea0a4179fe7bf1f86de\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\c54f080e7f3a9ea0a4179fe7bf1f86de\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\d68a4b84164372663908cb66edd1852a\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\d68a4b84164372663908cb66edd1852a\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\ce1aa6639c8cb0bb4a848c4b654166f3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\ce1aa6639c8cb0bb4a848c4b654166f3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\ab5e2b5e21239e34e016aa44f55cd807\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\pinni\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\ab5e2b5e21239e34e016aa44f55cd807\AndroidManifest.xml:20:5-44
+INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+		ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+		INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+		ADDED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
+		INJECTED from C:\repositories\Github\MobileAppDev\SimpleCalc\app\src\main\AndroidManifest.xml
