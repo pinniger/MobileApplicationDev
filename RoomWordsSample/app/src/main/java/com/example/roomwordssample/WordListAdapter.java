@@ -26,7 +26,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     public void onBindViewHolder(WordViewHolder holder, int position) {
         if (mWords != null) {
             Word current = mWords.get(position);
-            holder.wordItemView.setText(current.getWord());
+            holder.wordItemView.setText(current.getWord() + " - " + current.getPart());
         } else {
             // Covers the case of data not being ready yet.
             holder.wordItemView.setText("No Word");

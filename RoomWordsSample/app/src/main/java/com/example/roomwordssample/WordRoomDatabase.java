@@ -9,7 +9,7 @@ import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
 
-@Database(entities = {Word.class}, version = 1, exportSchema = false)
+@Database(entities = {Word.class}, version = 2, exportSchema = false)
 public abstract class WordRoomDatabase extends RoomDatabase {
 
     public abstract WordDao wordDao();
@@ -51,6 +51,7 @@ public abstract class WordRoomDatabase extends RoomDatabase {
 
         private final WordDao mDao;
         String[] words = {"dolphin", "crocodile", "cobra"};
+        String[] parts = {"noun", "noun", "noun"};
 
         PopulateDbAsync(WordRoomDatabase db) {
             mDao = db.wordDao();
@@ -62,7 +63,7 @@ public abstract class WordRoomDatabase extends RoomDatabase {
             // If we have no words, then create the initial list of words
             if (mDao.getAnyWord().length < 1) {
                 for (int i = 0; i <= words.length - 1; i++) {
-                    Word word = new Word(words[i]);
+                    Word word = new Word(words[i], parts[i]);
                     mDao.insert(word);
                 }
             }
