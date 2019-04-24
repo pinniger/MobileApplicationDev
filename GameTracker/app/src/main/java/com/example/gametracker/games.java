@@ -82,6 +82,9 @@ public class games extends AppCompatActivity {
         if(mGames.size() == 0){
             TextView noData = findViewById(R.id.text_games_nodata);
             noData.setVisibility(View.VISIBLE);
+        } else {
+            TextView noData = findViewById(R.id.text_games_nodata);
+            noData.setVisibility(View.GONE);
         }
 
         mAdapter.notifyDataSetChanged();

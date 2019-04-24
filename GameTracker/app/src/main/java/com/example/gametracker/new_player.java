@@ -38,7 +38,6 @@ public class new_player extends AppCompatActivity {
             startEditMode(id);
         }
 
-
         setSupportActionBar(mToolbar);
 
         // Set up button event listeners

@@ -4,8 +4,10 @@ import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +28,8 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
+import static android.content.ContentValues.TAG;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -40,11 +44,13 @@ public class MainActivity extends AppCompatActivity {
     private static final int NOTIFICATION_ID = 0;
     private static final String PRIMARY_CHANNEL_ID = "primary_notification_channel";
     private NotificationManager mNotificationManager;
-
+    protected Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "Anything? ");
+        SeedDatabaseIfEmpty();
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -71,6 +77,86 @@ public class MainActivity extends AppCompatActivity {
         populateRecentWinners();
 
         createAlarm();
+    }
+
+    private void SeedDatabaseIfEmpty() {
+        try {
+            DataSourceHelper dsh = new DataSourceHelper(this);
+            dsh.open();
+            List<Player> players = dsh.getAllPlayers();
+            List<Game> games = dsh.getAllGames();
+
+            if (players.isEmpty() && games.isEmpty()){
+                Log.d(TAG, "Database is empty ");
+                new seedDatabaseAsync(this).execute();
+            }
+            dsh.close();
+
+
+        } catch (Exception e){
+            Log.d(TAG, "PopulateDatabase: Failed " + e.getMessage());
+        }
+    }
+
+    private class seedDatabaseAsync extends AsyncTask<Void, Void, Void> {
+
+        private Context mContext;
+        seedDatabaseAsync(Context context) {
+            Log.d(TAG, "seedDatabase: Constructor called");
+            this.mContext = context;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            Log.d(TAG, "seedDatabase: Seeding database...");
+            try {
+                DataSourceHelper pds = new DataSourceHelper(mContext);
+                MockData mockData = new MockData();
+                List<Player> players = mockData.GetPlayers();
+                pds.open();
+                for (Player p : players) {
+                    pds.insertPlayer(p);
+                }
+
+                // We need to get the players back out of the database to make sure
+                // the ids are correct to seed the games table
+                players = pds.getAllPlayers();
+
+                Game g1 = new Game();
+                g1.setDateString("04/19/2019");
+                g1.setFirstPlace(players.get(0).getId());
+                g1.setSecondPlace(players.get(1).getId());
+                g1.setThirdPlace(players.get(2).getId());
+                pds.insertGame(g1);
+
+                Game g2 = new Game();
+                g2.setDateString("04/12/2019");
+                g2.setFirstPlace(players.get(0).getId());
+                g2.setSecondPlace(players.get(1).getId());
+                g2.setThirdPlace(players.get(2).getId());
+                pds.insertGame(g2);
+
+                Game g3 = new Game();
+                g3.setDateString("04/05/2019");
+                g3.setFirstPlace(players.get(0).getId());
+                g3.setSecondPlace(players.get(2).getId());
+                g3.setThirdPlace(players.get(1).getId());
+                pds.insertGame(g3);
+
+                pds.close();
+            } catch (Exception e) {
+                Log.d(TAG, "seedDatabase: " + e.getMessage());
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            //populateTopPlayers();
+            //populateRecentWinners();
+        }
     }
 
     private void createAlarm() {

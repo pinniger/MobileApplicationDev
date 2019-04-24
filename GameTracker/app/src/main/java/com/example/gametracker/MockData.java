@@ -1,25 +1,28 @@
 package com.example.gametracker;
 
+import android.util.Log;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerRepositoryMock {
+import static android.content.ContentValues.TAG;
 
+public class MockData {
+    private String mDateFormat = "MM/dd/yy";
     List<Player> players = new ArrayList<>();
-    public PlayerRepositoryMock() {
+    List<Game> games = new ArrayList<>();
+
+    public MockData() {
         players.add(new Player("John Doe","Developer"));
         players.add(new Player("Jack Doe","Developer"));
         players.add(new Player("Justin Doe","Developer"));
         players.add(new Player("Jenna Doe","Reporting"));
         players.add(new Player("Jane Doe","Reporting"));
-
     }
 
-    public List<Player> GetAll(){
+    public List<Player> GetPlayers(){
         return players;
     }
 
-    public List<Player> GetTopRanked(int num){
-        return players.subList(0, num);
-    }
 }

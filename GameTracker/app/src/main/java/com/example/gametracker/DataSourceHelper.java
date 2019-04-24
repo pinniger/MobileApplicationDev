@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.util.Log;
 
 import java.sql.SQLException;
@@ -34,7 +35,7 @@ public class DataSourceHelper {
         boolean succeeded = false;
         try {
             ContentValues initialValues = setPlayerValues(player);
-            succeeded = database.insert(dbHe1per.PLAYER_TABLE_NAME, null, initialValues) > 0;
+            succeeded = database.insert(GameTrackerDBHelper.PLAYER_TABLE_NAME, null, initialValues) > 0;
         } catch (Exception e) {
             // do nothing
         }
@@ -50,7 +51,7 @@ public class DataSourceHelper {
     public boolean deletePlayer(Player player) {
         try {
 
-            return database.delete(dbHe1per.PLAYER_TABLE_NAME, dbHe1per.PLAYER_COL_ID + "= ?", new String[]{Integer.toString(player.getId())}) > 0;
+            return database.delete(GameTrackerDBHelper.PLAYER_TABLE_NAME, GameTrackerDBHelper.PLAYER_COL_ID + "= ?", new String[]{Integer.toString(player.getId())}) > 0;
 
         } catch (Exception e) {
             Log.d(TAG, "deletePlayer: " + e.getMessage());
@@ -64,7 +65,7 @@ public class DataSourceHelper {
      */
     public Cursor getAllCursor() {
         try {
-            String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME + ";";
+            String query = "select * from " + GameTrackerDBHelper.PLAYER_TABLE_NAME + ";";
             return database.rawQuery(query, null);
 
         } catch (Exception e) {
@@ -80,7 +81,7 @@ public class DataSourceHelper {
     public List<Player> getAllPlayers() {
         List<Player> players = new ArrayList<>();
         try {
-            String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME + ";";
+            String query = "select * from " + GameTrackerDBHelper.PLAYER_TABLE_NAME + ";";
             Cursor cursor = database.rawQuery(query, null);
             while (cursor.moveToNext()) {
                 Log.d(TAG, "getAllPlayers: adding player " + cursor.getInt(0));
@@ -109,7 +110,7 @@ public class DataSourceHelper {
     public Player getPlayer(int id) {
         try {
             Player player = new Player();
-            String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME + " where _id = " + id;
+            String query = "select * from " + GameTrackerDBHelper.PLAYER_TABLE_NAME + " where _id = " + id;
             Cursor cursor = database.rawQuery(query, null);
             if (cursor.moveToFirst()) {
                 player.setId(cursor.getInt(0));
@@ -135,7 +136,7 @@ public class DataSourceHelper {
 
         try {
             PlayerDetail player = new PlayerDetail();
-            String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME + " where " + dbHe1per.PLAYER_COL_ID + " = " + id;
+            String query = "select * from " + GameTrackerDBHelper.PLAYER_TABLE_NAME + " where " + GameTrackerDBHelper.PLAYER_COL_ID + " = " + id;
             Cursor playerCursor = database.rawQuery(query, null);
             if (playerCursor.moveToFirst()) {
                 player.setId(playerCursor.getInt(0));
@@ -145,7 +146,7 @@ public class DataSourceHelper {
             }
 
             // get first place finishes
-            query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_FIRST_PLACE + " = " + id;
+            query = "select count(*) as total from " + GameTrackerDBHelper.GAMES_TABLE_NAME + " where " + GameTrackerDBHelper.GAMES_COL_FIRST_PLACE + " = " + id;
             Cursor firstPlaceCursor = database.rawQuery(query, null);
             if (firstPlaceCursor.moveToFirst()) {
                 player.setFirstPlaceFinishes(firstPlaceCursor.getInt(0));
@@ -153,7 +154,7 @@ public class DataSourceHelper {
             }
 
             // get second place finishes
-            query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_SECOND_PLACE + " = " + id;
+            query = "select count(*) as total from " + GameTrackerDBHelper.GAMES_TABLE_NAME + " where " + GameTrackerDBHelper.GAMES_COL_SECOND_PLACE + " = " + id;
             Cursor secondPlaceCursor = database.rawQuery(query, null);
             if (secondPlaceCursor.moveToFirst()) {
                 player.setSecondPlaceFinishes(secondPlaceCursor.getInt(0));
@@ -161,7 +162,7 @@ public class DataSourceHelper {
             }
 
             // get third place finishes
-            query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_THRID_PLACE + " = " + id;
+            query = "select count(*) as total from " + GameTrackerDBHelper.GAMES_TABLE_NAME + " where " + GameTrackerDBHelper.GAMES_COL_THRID_PLACE + " = " + id;
             Cursor thirdPlaceCursor = database.rawQuery(query, null);
             if (thirdPlaceCursor.moveToFirst()) {
                 player.setThirdPlaceFinishes(thirdPlaceCursor.getInt(0));
@@ -185,7 +186,7 @@ public class DataSourceHelper {
         List<PlayerDetail> topPlayers = new ArrayList<>();
         try {
 
-            String query = "select * from " + dbHe1per.PLAYER_TABLE_NAME;
+            String query = "select * from " + GameTrackerDBHelper.PLAYER_TABLE_NAME;
 
             Cursor allPlayersCursor = database.rawQuery(query, null);
             while (allPlayersCursor.moveToNext()) {
@@ -196,7 +197,7 @@ public class DataSourceHelper {
                 player.setGroup(allPlayersCursor.getString(2));
 
                 // get first place finishes
-                query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_FIRST_PLACE + " = " + id;
+                query = "select count(*) as total from " + GameTrackerDBHelper.GAMES_TABLE_NAME + " where " + GameTrackerDBHelper.GAMES_COL_FIRST_PLACE + " = " + id;
                 Cursor firstPlaceCursor = database.rawQuery(query, null);
                 if (firstPlaceCursor.moveToFirst()) {
                     player.setFirstPlaceFinishes(firstPlaceCursor.getInt(0));
@@ -204,7 +205,7 @@ public class DataSourceHelper {
                 }
 
                 // get second place finishes
-                query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_SECOND_PLACE + " = " + id;
+                query = "select count(*) as total from " + GameTrackerDBHelper.GAMES_TABLE_NAME + " where " + GameTrackerDBHelper.GAMES_COL_SECOND_PLACE + " = " + id;
                 Cursor secondPlaceCursor = database.rawQuery(query, null);
                 if (secondPlaceCursor.moveToFirst()) {
                     player.setSecondPlaceFinishes(secondPlaceCursor.getInt(0));
@@ -212,7 +213,7 @@ public class DataSourceHelper {
                 }
 
                 // get third place finishes
-                query = "select count(*) as total from " + dbHe1per.GAMES_TABLE_NAME + " where " + dbHe1per.GAMES_COL_THRID_PLACE + " = " + id;
+                query = "select count(*) as total from " + GameTrackerDBHelper.GAMES_TABLE_NAME + " where " + GameTrackerDBHelper.GAMES_COL_THRID_PLACE + " = " + id;
                 Cursor thirdPlceCursor = database.rawQuery(query, null);
                 if (thirdPlceCursor.moveToFirst()) {
                     player.setThirdPlaceFinishes(thirdPlceCursor.getInt(0));
@@ -240,29 +241,10 @@ public class DataSourceHelper {
         Log.d(TAG, "updatePlayer: Updating " + player.getName());
         try {
             ContentValues initialValues = setPlayerValues(player);
-            return database.update(dbHe1per.PLAYER_TABLE_NAME, initialValues, dbHe1per.PLAYER_COL_ID + " = " + player.getId(), null) > 0;
+            return database.update(GameTrackerDBHelper.PLAYER_TABLE_NAME, initialValues, GameTrackerDBHelper.PLAYER_COL_ID + " = " + player.getId(), null) > 0;
         } catch (Exception e) {
             Log.d(TAG, "updatePlayer: " + e.getMessage());
             return false;
-        }
-    }
-
-
-    /**
-     * This method is here to seed the players table during development
-     * I'm leaving it here for future use, but it is not called anywhere
-     * in the program
-     */
-    public void seedPlayers() {
-        Log.d(TAG, "seedPlayers: Seeding players...");
-        try {
-            PlayerRepositoryMock mockData = new PlayerRepositoryMock();
-            List<Player> players = mockData.GetAll();
-            for (Player p : players) {
-                insertPlayer(p);
-            }
-        } catch (Exception e) {
-            Log.d(TAG, "seedPlayers: " + e.getMessage());
         }
     }
 
@@ -275,8 +257,8 @@ public class DataSourceHelper {
     private ContentValues setPlayerValues(Player player) {
         ContentValues values = new ContentValues();
 
-        values.put(dbHe1per.PLAYER_COL_NAME, player.getName());
-        values.put(dbHe1per.PLAYER_COL_GROUP, player.getGroup());
+        values.put(GameTrackerDBHelper.PLAYER_COL_NAME, player.getName());
+        values.put(GameTrackerDBHelper.PLAYER_COL_GROUP, player.getGroup());
 
         return values;
     }
@@ -289,19 +271,18 @@ public class DataSourceHelper {
     private ContentValues setGameValues(Game game) {
         ContentValues values = new ContentValues();
 
-        values.put(dbHe1per.GAMES_COL_DATEPLAYED, game.getDateString());
-        values.put(dbHe1per.GAMES_COL_FIRST_PLACE, game.getFirstPlace());
-        values.put(dbHe1per.GAMES_COL_SECOND_PLACE, game.getSecondPlace());
-        values.put(dbHe1per.GAMES_COL_THRID_PLACE, game.getThirdPlace());
+        values.put(GameTrackerDBHelper.GAMES_COL_DATEPLAYED, game.getDateString());
+        values.put(GameTrackerDBHelper.GAMES_COL_FIRST_PLACE, game.getFirstPlace());
+        values.put(GameTrackerDBHelper.GAMES_COL_SECOND_PLACE, game.getSecondPlace());
+        values.put(GameTrackerDBHelper.GAMES_COL_THRID_PLACE, game.getThirdPlace());
 
         return values;
     }
 
     /**
      * Opens a database connection
-     * @throws SQLException
      */
-    public void open() throws SQLException {
+    public void open() {
         database = dbHe1per.getWritableDatabase();
     }
 
@@ -320,7 +301,7 @@ public class DataSourceHelper {
     public boolean deleteGame(Game game) {
         try {
 
-            return database.delete(dbHe1per.GAMES_TABLE_NAME, dbHe1per.GAMES_COL_ID + "= ?", new String[]{Integer.toString(game.getId())}) > 0;
+            return database.delete(GameTrackerDBHelper.GAMES_TABLE_NAME, GameTrackerDBHelper.GAMES_COL_ID + "= ?", new String[]{Integer.toString(game.getId())}) > 0;
 
         } catch (Exception e) {
             Log.d(TAG, "deleteGame: " + e.getMessage());
@@ -336,7 +317,7 @@ public class DataSourceHelper {
         List<Game> games = new ArrayList<>();
         //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         try {
-            String query = "select * from " + dbHe1per.GAMES_TABLE_NAME + " order by " + dbHe1per.GAMES_COL_DATEPLAYED + " desc;";
+            String query = "select * from " + GameTrackerDBHelper.GAMES_TABLE_NAME + " order by " + GameTrackerDBHelper.GAMES_COL_DATEPLAYED + " desc;";
             Cursor cursor = database.rawQuery(query, null);
             while (cursor.moveToNext()) {
                 Game game = new Game();
@@ -366,7 +347,7 @@ public class DataSourceHelper {
     public List<RecentWinner> getRecentWinners(int num) {
 
         List<RecentWinner> winners = new ArrayList<>();
-        String query = "select * from " + dbHe1per.GAMES_TABLE_NAME + " order by " + dbHe1per.GAMES_COL_DATEPLAYED + " desc LIMIT " + num + ";";
+        String query = "select * from " + GameTrackerDBHelper.GAMES_TABLE_NAME + " order by " + GameTrackerDBHelper.GAMES_COL_DATEPLAYED + " desc LIMIT " + num + ";";
         Cursor cursor = database.rawQuery(query, null);
 
         while (cursor.moveToNext()) {
@@ -394,7 +375,7 @@ public class DataSourceHelper {
     public Game getGame(int id) {
         try {
             Game game = new Game();
-            String query = "select * from " + dbHe1per.GAMES_TABLE_NAME + " where _id = " + id;
+            String query = "select * from " + GameTrackerDBHelper.GAMES_TABLE_NAME + " where _id = " + id;
             Cursor cursor = database.rawQuery(query, null);
             if (cursor.moveToFirst()) {
                 game.setId(cursor.getInt(0));
@@ -421,7 +402,7 @@ public class DataSourceHelper {
     public boolean updateGame(Game game) {
         try {
             ContentValues initialValues = setGameValues(game);
-            return database.update(dbHe1per.GAMES_TABLE_NAME, initialValues, dbHe1per.GAMES_COL_ID + " = " + game.getId(), null) > 0;
+            return database.update(GameTrackerDBHelper.GAMES_TABLE_NAME, initialValues, GameTrackerDBHelper.GAMES_COL_ID + " = " + game.getId(), null) > 0;
         } catch (Exception e) {
             Log.d(TAG, "updateGame: " + e.getMessage());
             return false;
@@ -436,10 +417,36 @@ public class DataSourceHelper {
     public boolean insertGame(Game game) {
         try {
             ContentValues initialValues = setGameValues(game);
-            return database.insert(dbHe1per.GAMES_TABLE_NAME, null, initialValues) > 0;
+            return database.insert(GameTrackerDBHelper.GAMES_TABLE_NAME, null, initialValues) > 0;
         } catch (Exception e) {
             Log.d(TAG, "insertGame: " + e.getMessage());
             return false;
         }
     }
+
+    /**
+     * This method is here to seed the players table during development
+     * I'm leaving it here for future use, but it is not called anywhere
+     * in the program
+     */
+    /*
+    public void seedDatabase() {
+        Log.d(TAG, "seedDatabase: Seeding database...");
+        try {
+            MockData mockData = new MockData();
+            List<Player> players = mockData.GetPlayers();
+            List<Game> games = mockData.GetGames();
+            for (Player p : players) {
+                insertPlayer(p);
+            }
+
+            for (Game g : games) {
+                insertGame(g);
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "seedDatabase: " + e.getMessage());
+        }
+    }
+    */
+
 }
