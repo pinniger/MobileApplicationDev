@@ -10,21 +10,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:text="February 23rd"
         android:textColor="#ffffff"
         android:textSize="18dp" />
 
     <ImageView style="@style/image_view_letters"
-        android:id="@+id/image_recent_winners"/>
+        android:layout_marginBottom="20dp"
+        android:id="@+id/image_recent_winners" />
 
     <TextView
         android:id="@+id/text_recent_winners_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:text="Player One"
         android:textColor="#ffffff" />
 </LinearLayout>

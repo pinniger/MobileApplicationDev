@@ -18,17 +18,26 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
+
+import com.example.gametracker.AlarmReceiver;
+import com.example.gametracker.DataSourceHelper;
+import com.example.gametracker.Game;
+import com.example.gametracker.MockData;
+import com.example.gametracker.Player;
+import com.example.gametracker.PlayerDetail;
+import com.example.gametracker.R;
+import com.example.gametracker.RecentWinner;
+import com.example.gametracker.RecentWinnersListAdapter;
+import com.example.gametracker.TopPlayersListAdapter;
+import com.example.gametracker.games;
+import com.example.gametracker.new_game;
+import com.example.gametracker.players;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "Anything? ");
         SeedDatabaseIfEmpty();
 
         setContentView(R.layout.activity_main);
@@ -131,15 +139,15 @@ public class MainActivity extends AppCompatActivity {
 
                 Game g2 = new Game();
                 g2.setDateString("04/12/2019");
-                g2.setFirstPlace(players.get(0).getId());
+                g2.setFirstPlace(players.get(3).getId());
                 g2.setSecondPlace(players.get(1).getId());
-                g2.setThirdPlace(players.get(2).getId());
+                g2.setThirdPlace(players.get(0).getId());
                 pds.insertGame(g2);
 
                 Game g3 = new Game();
                 g3.setDateString("04/05/2019");
-                g3.setFirstPlace(players.get(0).getId());
-                g3.setSecondPlace(players.get(2).getId());
+                g3.setFirstPlace(players.get(2).getId());
+                g3.setSecondPlace(players.get(0).getId());
                 g3.setThirdPlace(players.get(1).getId());
                 pds.insertGame(g3);
 

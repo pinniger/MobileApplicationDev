@@ -73,7 +73,7 @@ public class new_player extends AppCompatActivity {
         }
 
         // Set the title of the tool bar
-        mToolbar.setTitle(getString(R.string.edit_text) + mCurrentPlayer.getName());
+        mToolbar.setTitle(getString(R.string.edit_text) + " " + mCurrentPlayer.getName());
 
         // Get the view widgets we need and set their text
         TextView name = findViewById(R.id.edit_new_player_name);
